@@ -1,0 +1,41 @@
+<div class="login-content">
+  <div class="login">
+    <div class="rounded white">
+      <div class="card border-0">
+        <div class="card-body">
+          <div class="mb-5">
+            <h4 class="h4-responsive mb-2 font-weight-bold">
+              <mdb-icon fas icon="user" class="mr-2"></mdb-icon>
+              Connectez-vous à votre compte
+            </h4>
+            <hr>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-4">
+              <input type="email" formControlName="username" class="form-control mb-4" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Nom utilisateur">
+              <!--<div *ngIf="submitted && f.username.errors" class="invalid-feedback">-->
+                <!--<div *ngIf="f.username.errors.required">Username is required</div>-->
+              <!--</div>-->
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <input type="password" formControlName="password" class="form-control mb-4" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Mot de passe">
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
+              <button [disabled]="loading" mdbBtn color="primary" block="true" class="my-4" type="submit">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Connexion
+              </button>
+            </div>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

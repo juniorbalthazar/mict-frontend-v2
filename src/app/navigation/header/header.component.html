@@ -1,0 +1,103 @@
+<div class="top-header" id="topHe">
+  <div class="top-header-blue"></div>
+  <div class="top-header-red"></div>
+</div>
+<header class="h-200">
+  <div class="blue-border"></div>
+  <div class="red-border"></div>
+  <mdb-navbar
+    id="navbar"
+    SideClass="navbar navbar-expand-lg navbar-light nav-fixed-top white scrolling-navbar px-0 "
+    [containerInside]="false"
+  >
+    <mdb-navbar-brand style="visibility: hidden">
+      <a routerLink="/home" routerLinkActive class="navbar-brand">
+        <div class="armoirie">
+          <img
+            src="../../../assets/img/logo/ayiti_digital_logo.png"
+            class="ycal d-inline-block align-top amoirie-img"
+            alt=""
+            routerLink="/welcome"
+          />
+        </div>
+      </a>
+    </mdb-navbar-brand>
+    <a style="visibility: hidden" class="acceuil-icon" routerLink="/welcome">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <span>{{ "header.Acceuil" | translate }}</span>
+    </a>
+
+    <!-- <h4 class="mict">Ministère de l'Intérieur et des Collectivités Territoriales</h4> -->
+    <links id="links">
+      <span id="imt" class="imigration-text">{{
+        "header.title" | translate
+      }}</span>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <!--*ngIf="!loginUser"-->
+          <span class="mr-2 localization-label d-none d-sm-inline">
+            <mdb-icon fas icon="globe" style="color: brown"></mdb-icon>
+            {{ "select.language" | translate }}
+          </span>
+          <div class="d-inline-block">
+            <select
+              class="form-control browser-default custom-select"
+              #selectedLang
+              (change)="getSwitchLang(selectedLang.value)"
+            >
+              <option
+                *ngFor="let language of translate.getLangs()"
+                [value]="language"
+                [selected]="language === translate.currentLang"
+              >
+                {{ language }}
+              </option>
+            </select>
+          </div>
+        </li>
+        <!-- <li class="nav-item">*ngIf="!loginUser"
+          <a [routerLink]="['/auth/login']" routerLinkActive="is-active" class="nav-link">
+            Connexion
+            <mdb-icon fas icon="sign-in-alt"></mdb-icon>
+          </a>
+        </li>
+        <li *ngIf="loginUser" class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            {{loginUser?.account?.firstName}} {{loginUser?.account?.lastName}}<span class="caret"></span></a>
+
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a *ngIf="isAdmin" [routerLink]="['/travellers/dashboard']"
+               class="dropdown-item waves-light" mdbWavesEffect>
+              <mdb-icon fas icon="tachometer-alt"></mdb-icon>
+              Tableau de bord
+            </a>
+            <a *ngIf="isAdmin" [routerLink]="['/auth/users']"
+               class="dropdown-item waves-light" mdbWavesEffect>
+              <mdb-icon fas icon="users"></mdb-icon>
+              Gestion des utilisateurs
+            </a>
+            <a [routerLink]="['/travellers/list']" class="dropdown-item waves-light" mdbWavesEffect href="#">
+              <mdb-icon fas icon="folder"></mdb-icon>
+              Gestion des Voyageurs
+            </a>
+            <a (click)="logout()"  class="dropdown-item waves-light" mdbWavesEffect href="#">
+              <mdb-icon fas icon="sign-out-alt"></mdb-icon>
+              Deconnexion</a>
+          </div>
+        </li> -->
+      </ul>
+    </links>
+  </mdb-navbar>
+</header>
+
+<!--
+<select
+  class="form-control"
+  #selectedLang
+  (change)="getSwitchLang(selectedLang.value)">
+  <option *ngFor="let language of translate.getLangs()"
+          [value]="language"
+          [selected]="language === translate.currentLang">
+    {{ language }}
+  </option>
+</select>-->

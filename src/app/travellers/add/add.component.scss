@@ -1,0 +1,908 @@
+.derl-logo {
+  width: 80px;
+  height: 85px;
+  background: url(../../../assets/img/mitc.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 0px !important;
+}
+
+// ================TOOLTIPS===========
+
+// ==========================
+.rounded-card {
+  border-radius: 20px;
+}
+
+.box-form-info {
+  text-align: center;
+  position: relative;
+}
+
+.box-form-info p {
+  // border: 3px solid green;
+  justify-content: left;
+  font-size: 1rem;
+  padding: 8px;
+}
+
+.box-form-info p i {
+  // border: 3px solid green;
+  color: #edbb99;
+  display: block;
+}
+
+.form-info {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.form-zoom {
+  zoom: 90%;
+}
+
+// =========================================================
+// ================TOOLTIPS===========
+a:hover {
+  text-decoration: none;
+}
+
+header,
+.demo,
+.demo p {
+  margin: 4em 0;
+  text-align: center;
+}
+
+/**
+ * Tooltip Styles
+ */
+
+/* Base styles for the element that has a tooltip */
+[data-tooltip],
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Base styles for the entire tooltip */
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out,
+    -webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -moz-transition:    
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out,
+    -moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  transition:         
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out,
+    transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform:    translate3d(0, 0, 0);
+  transform:         translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+/* Show the entire tooltip on hover and focus */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after,
+.tooltip:hover:before,
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* Base styles for the tooltip's directional arrow */
+.tooltip:before,
+[data-tooltip]:before {
+  z-index: 1001;
+  border: 6px solid transparent;
+  background: transparent;
+  content: "";
+}
+
+/* Base styles for the tooltip's content area */
+.tooltip:after,
+[data-tooltip]:after {
+  z-index: 1000;
+  padding: 10px;
+  width: 300px;/*box size*/
+  background-color:#FDFEFE;/*background color*/
+  background-color:#F6DDCC;/*background color*/
+  color: #1C2833;
+  content: attr(data-tooltip);
+  font-size: 16px;/*font size*/
+  font-weight: 300;/* groseeur*/
+  line-height: 1.2;/**/
+}
+
+/* Directions */
+
+/* Top (default) */
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after,
+.tooltip-top:before,
+.tooltip-top:after {
+  bottom: 100%;
+  left: 50%;
+}
+
+[data-tooltip]:before,
+.tooltip:before,
+.tooltip-top:before {
+  margin-left: -6px;
+  margin-bottom: -12px;
+  border-top-color: #000;
+  border-top-color: hsla(0, 0%, 20%, 0.9);
+}
+
+/* Horizontally align top/bottom tooltips */
+[data-tooltip]:after,
+.tooltip:after,
+.tooltip-top:after {
+  margin-left: -80px;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after,
+.tooltip:hover:before,
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after,
+.tooltip-top:hover:before,
+.tooltip-top:hover:after,
+.tooltip-top:focus:before,
+.tooltip-top:focus:after {
+  -webkit-transform: translateY(-12px);
+  -moz-transform:    translateY(-12px);
+  transform:         translateY(-12px); 
+}
+
+/* Left */
+.tooltip-left:before,
+.tooltip-left:after {
+  right: 100%;
+  bottom: 50%;
+  left: auto;
+}
+
+.tooltip-left:before {
+  margin-left: 0;
+  margin-right: -12px;
+  margin-bottom: 0;
+  border-top-color: transparent;
+  border-left-color: #000;
+  border-left-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-left:hover:before,
+.tooltip-left:hover:after,
+.tooltip-left:focus:before,
+.tooltip-left:focus:after {
+  -webkit-transform: translateX(-12px);
+  -moz-transform:    translateX(-12px);
+  transform:         translateX(-12px); 
+}
+
+/* Bottom */
+.tooltip-bottom:before,
+.tooltip-bottom:after {
+  top: 100%;
+  bottom: auto;
+  left: 50%;
+}
+
+.tooltip-bottom:before {
+  margin-top: -12px;
+  margin-bottom: 0;
+  border-top-color: transparent;
+  border-bottom-color: #000;
+  border-bottom-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-bottom:hover:before,
+.tooltip-bottom:hover:after,
+.tooltip-bottom:focus:before,
+.tooltip-bottom:focus:after {
+  -webkit-transform: translateY(12px);
+  -moz-transform:    translateY(12px);
+  transform:         translateY(12px); 
+}
+
+/* Right */
+.tooltip-right:before,
+.tooltip-right:after {
+  bottom: 50%;
+  left: 100%;
+}
+
+.tooltip-right:before {
+  margin-bottom: 0;
+  margin-left: -12px;
+  border-top-color: transparent;
+  border-right-color: #000;
+  border-right-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-right:hover:before,
+.tooltip-right:hover:after,
+.tooltip-right:focus:before,
+.tooltip-right:focus:after {
+  -webkit-transform: translateX(12px);
+  -moz-transform:    translateX(12px);
+  transform:         translateX(12px); 
+}
+
+/* Move directional arrows down a bit for left/right tooltips */
+.tooltip-left:before,
+.tooltip-right:before {
+  top: 3px;
+}
+
+/* Vertically center tooltip content for left/right tooltips */
+.tooltip-left:after,
+.tooltip-right:after {
+  margin-left: 0;
+  margin-bottom: -16px;
+}
+/*icon tooltip*/
+.tt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #2874a6;
+  padding: 2px 8px;
+  margin: 8px 3px;
+  height: 24px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bolder !important;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.tt-direc {
+  display: flex;
+  font-weight: bolder;
+  flex-direction: row;
+}
+// end tooltip
+
+
+
+.form-label-size {
+  font-size: 1.2rem;
+}
+
+.step-title-size {
+  font-weight: bold;
+}
+
+// qr code section
+
+.card-name {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 7px;
+  border-radius: 10px;
+  background-color: #19237e;
+}
+
+.card-container {
+  border-radius: 15px;
+}
+.card-label {
+  color: #19237e;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.card-val {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+.mict-logo {
+}
+
+
+.mict-logo img {
+  width: 70px;
+  height: 70px;
+}
+
+.headert {
+  background-color: #19237e;
+  height: 7px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.headerb {
+  background-color: #ff2300;
+  height: 7px;
+}
+
+.btn-color {
+  background-color: #19237e;
+  color: white;
+}
+
+.section-title {
+  font-weight: 500;
+}
+
+
+.center-horizontal{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+// form responsive
+
+
+// screen from 0px to 768
+// Small devices (landscape phones, less than 768px)
+//****** (col-sm-x)*********
+@media(max-width:768px) {
+body{
+  overflow-x: hidden;
+}
+  .rounded-card {
+    border-radius: 0px;
+  }
+  .form-zoom{
+    zoom: 90%;
+}
+#main-form{
+  padding:0px;
+  margin: 0px;
+}
+.form-content .container {
+  padding: 0rem;
+  
+}
+.box-form-info{
+  margin-top:4rem;
+  margin-bottom: 6rem;
+  padding-top: 1.3rem;
+}
+// .form-info{
+//   margin-top: 5rem;
+// }
+.card-body{
+  overflow-x: hidden;
+}
+}
+
+
+
+
+// screen from 768px to 992
+// Medium devices (tablets, less than 992px)
+//****** (col-md-x)*********
+@media (max-width: 992px) { 
+  body{
+    overflow-x: hidden;
+  }
+    .rounded-card {
+      border-radius: 0px;
+    }
+    .form-zoom{
+      zoom: 90%;
+  }
+  #main-form{
+    padding:0px;
+    margin: 0px;
+  }
+  .form-content .container {
+    padding: 0rem;
+    
+  }
+  .box-form-info{
+    margin-top:4rem;
+    margin-bottom: 5rem;
+    padding-top: 4rem;
+  }
+  .card-body{
+    overflow-x: hidden;
+  }
+}
+
+
+
+// sante step css
+
+.question{
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+    }
+  
+// placeholder required icon
+
+
+
+// switch toggle
+#toggle-switch{
+.switch {
+  position: absolute;
+  top: 77%;//position of the button vertical
+  left: 65%;//position of the button horizontal
+  width: 100px;
+  height: 20px; //hauteur of the bouton
+  text-align: center;
+  margin: -10px 0 0 -160px;
+  background:#27AE60;
+  padding: .5rem;
+  transition: all 0.2s ease;
+  border-radius: 45px;
+}
+.switch span {
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+  margin: -2px 0px 0px -4px;
+  background: #fff;
+  display: block;
+  transform: rotate(-45deg);
+  transition: all 0.2s ease;
+}
+.switch span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 4px;
+  height: 10px;
+  margin-top: -8px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+input[type=radio] {
+  display: none;
+}
+.switch label {
+  cursor: pointer;
+  color: rgba(0,0,0,0.2);
+  width: 40px;
+  line-height: 50px;
+  transition: all 0.2s ease;
+}
+
+
+// ----------------------------
+label[for=yes] {
+  position: absolute;
+  left: 0px;
+  height: 15px;
+  font-weight: 400;
+  top:-15px; //position of the text vertically
+}
+
+label[for=yes1] {
+  position: absolute;
+  left: 0px;
+  height: 15px;
+  font-weight: 400;
+  top:-15px; //position of the text vertically
+}
+
+label[for=yes2] {
+  position: absolute;
+  left: 0px;
+  height: 15px;
+  font-weight: 400;
+  top:-15px; //position of the text vertically
+}
+
+label[for=yes3] {
+  position: absolute;
+  left: 0px;
+  height: 15px;
+  font-weight: 400;
+  top:-15px; //position of the text vertically
+}
+label[for=yes4] {
+  position: absolute;
+  left: 0px;
+  height: 15px;
+  font-weight: 400;
+  top:-15px; //position of the text vertically
+}
+label[for=yes30] {
+  position: absolute;
+  left: 0px;
+  height: 15px;
+  font-weight: 400;
+  top:-15px; //position of the text vertically
+}
+
+label[for=yes13] {
+  position: absolute;
+  left: 0px;
+  height: 15px;
+  font-weight: 400;
+  top:-15px; //position of the text vertically
+}
+// -------------------------
+
+label[for=no] {
+  position: absolute;
+  font-weight: 400;
+  right: 0px;
+  top:-15px; //position of the text vertically
+}
+label[for=no1] {
+  position: absolute;
+  font-weight: 400;
+  right: 0px;
+  top:-15px; //position of the text vertically
+}
+
+label[for=no2] {
+  position: absolute;
+  font-weight: 400;
+  right: 0px;
+  top:-15px; //position of the text vertically
+}
+
+
+label[for=no3] {
+  position: absolute;
+  font-weight: 400;
+  right: 0px;
+  top:-15px; //position of the text vertically
+}
+
+
+label[for=no4] {
+  position: absolute;
+  font-weight: 400;
+  right: 0px;
+  top:-15px; //position of the text vertically
+}
+
+label[for=no30] {
+  position: absolute;
+  font-weight: 400;
+  right: 0px;
+  top:-15px; //position of the text vertically
+}
+
+label[for=no13] {
+  position: absolute;
+  font-weight: 400;
+  right: 0px;
+  top:-15px; //position of the text vertically
+}
+// ------------------------
+
+#no:checked ~ .switch {
+  background: #B03A2E;
+}
+
+#no1:checked ~ .switch {
+  background: #B03A2E;
+}
+
+#no2:checked ~ .switch {
+  background: #B03A2E;
+}
+#no3:checked ~ .switch {
+  background: #B03A2E;
+}
+#no4:checked ~ .switch {
+  background: #B03A2E;
+}
+#no30:checked ~ .switch {
+  background: #B03A2E;
+}
+
+#no13:checked ~ .switch {
+  background: #B03A2E;
+}
+
+// ----------------------
+
+#no:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+
+#no1:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+
+#no2:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+#no3:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+
+#no4:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+
+#no30:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+
+#no13:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+// -------------------------------
+#no:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+
+#no1:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+#no2:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+#no3:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+#no4:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+#no30:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+
+
+#no13:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+// -------------------------------------
+// -------------------------------
+
+#yes:checked ~ .switch label[for=yes] {
+  color: #fff;
+}
+
+#yes1:checked ~ .switch label[for=yes1] {
+  color: #fff;
+}
+#yes2:checked ~ .switch label[for=yes2] {
+  color: #fff;
+}
+#yes3:checked ~ .switch label[for=yes3] {
+  color: #fff;
+}
+
+#yes4:checked ~ .switch label[for=yes4] {
+  color: #fff;
+}
+
+
+#yes30:checked ~ .switch label[for=yes30] {
+  color: #fff;
+}
+
+#yes13:checked ~ .switch label[for=yes10] {
+  color: #fff;
+}
+// ------------------------------
+
+
+
+#no:checked ~ .switch label[for=no] {
+  color: #fff;
+}
+#no1:checked ~ .switch label[for=no1] {
+  color: #fff;
+}
+#no2:checked ~ .switch label[for=no2] {
+  color: #fff;
+}
+#no3:checked ~ .switch label[for=no3] {
+  color: #fff;
+}
+#no4:checked ~ .switch label[for=no4] {
+  color: #fff;
+}
+#no30:checked ~ .switch label[for=no30] {
+  color: #fff;
+}
+
+#no13:checked ~ .switch label[for=no13] {
+  color: #fff;
+}
+// -----------------------------------
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// screen from 992 to 1200
+// Large devices (desktops, less than 1200px)
+//****** (col-lg-x)*********
+
+// @media (max-width: 1200) { 
+//   #lg-device{
+// display: flex;
+// flex-direction: row;
+
+//   }
+  // body{
+  //   overflow-x: hidden;
+  // }
+  //   .rounded-card {
+  //     border-radius: 0px;
+  //   }
+  //   .form-zoom{
+  //     zoom: 90%;
+  // }
+  // #main-form{
+  //   padding:0px;
+  //   margin: 0px;
+  // }
+  // .form-content .container {
+  //   padding: 0rem;
+    
+  // }
+  // .box-form-info{
+  //   margin-top:4rem;
+  //   margin-bottom: 5rem;
+  //   padding-top: 4rem;
+  // }
+  // .card-body{
+  //   overflow-x: hidden;
+  // }
+// }
+
+
+// FIELDSET
+.reset {
+  all: revert;
+}
+fieldset, legend {
+  all: revert;
+}
+
+legend { 
+  color: #fff;
+  background-color: #095484;
+  padding: 3px 5px;
+  font-size: 20px;
+  }
+
+
+
+
+
+  

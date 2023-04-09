@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+body{
+  background: #EDEDED!important;
+}
+
+@media(max-width: 950px) {
+  .ycal {
+    width: 264px;
+    height: 68px;
+  }
+}
+
+.nav-fixed-top {
+  position: fixed!important;
+  top: 20px!important;
+  right: 0!important;
+  left: 0!important;
+  z-index: 1030!important;
+}
+
+.top-header{
+  position: fixed!important;
+  top: 0!important;
+  right: 0!important;
+  left: 0!important;
+  z-index: 9999!important;
+}

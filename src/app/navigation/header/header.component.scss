@@ -1,0 +1,176 @@
+.top-header .top-header-blue {
+  border: 5px solid #19237e;
+}
+.top-header .top-header-red {
+  border: 5px solid #ff2300;
+}
+
+.repu {
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color:#6d1d10
+}
+
+
+// NAVBAR HEIGHT
+:host ::ng-deep mdb-navbar nav div :not(.show) {
+  max-height: 45px !important;
+}
+.main-form{
+  padding: 0px;
+}
+//==
+
+.welcome-page{
+  top: 210px !important;
+}
+
+.amoirie-img{
+  height:200px;
+  // width:30rem;
+  object-fit: contain;
+}
+
+.armoirie {
+  // text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  // margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.armoirie img{
+width:100%;
+margin-left: 3rem;
+}
+
+
+// #links,#navbarCollapse{
+//   width:50%;
+// }
+// mdb-navbar-brand{
+//   height: 23rem;
+// }
+
+#navbarCollapse{
+  position: relative;
+}
+#links{
+  position: absolute;
+    right: 2rem;
+}
+
+.imigration-text{
+  position: absolute;
+  left: 34%;
+  margin:auto;
+  text-align: center;
+  font-weight: 600;
+  color:#000080;
+  font-size: 1.7rem;
+}
+
+
+.center-header{
+display: flex;
+justify-content: center;
+justify-content:space-between;
+align-items: center;
+}
+
+
+
+// .nav{
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+@media (min-width:  1200px){
+.container {
+    max-width: 1000px !important;
+}
+}
+
+.mict{
+  color:#040a4f;
+  font-weight:bold;
+  font-size: 1rem;
+}
+.armoirie {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mict{
+  color:#0a0e39;
+}
+
+
+
+// .formulare-intro .section{
+//   height: 100%;
+// }
+// responsive
+@media (max-width: 576px) { 
+  .amoirie-img{
+    height:100px;
+    width:100;
+    object-fit: contain;
+  }
+  .imigration-text{
+ display: none;
+  }
+ }
+
+
+
+.acceuil-icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: .8;
+  margin-left: 3rem;
+  cursor: pointer;
+}
+
+.acceuil-icon span{
+  font-size: 1.3rem;
+  color:#040a4f;
+}
+
+.acceuil-icon i{
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: #CB4335
+  
+}
+ 
+@media(max-width:911px) {
+//   #main{
+//     padding-top: 7rem;
+//   }
+//   header{
+//     margin-top: 5rem !important;
+//   }
+ 
+//   .rounded-card{
+//     border:none;
+// }
+.imigration-text{
+  display: none;
+   }
+}
+
+
+@media(max-width:1024px) {
+  .imigration-text{
+    display: none;
+     }
+}

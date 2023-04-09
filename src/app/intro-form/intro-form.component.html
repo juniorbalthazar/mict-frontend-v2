@@ -1,0 +1,68 @@
+<section id="formulare-intro" class="intro-form border">
+  <div class="container">
+        <div class="section row px-3 bg-white shadow text-center">
+          <span class="col-lg-6 col-md-6 col-sm-12">
+          <img
+            with="700"
+            
+            src="./../../assets/img/qrcode3.png"
+            class="col-lg-6 col-md-6 col-sm-12 mt-4"
+          />
+
+          <div>
+            <p class="form-info shadow p-3 mb-5 bg-white rounded">
+              <i class="fas fa-info-circle fa-3x" style="display: block; color:#CB4335"></i>
+              <strong>{{ "info-form.remarque" | translate }}</strong>
+              <br />
+              {{ "info-form.remarque-text" | translate }}
+              
+            </p>
+          </div>
+
+        </span>
+
+
+          <span class="col-lg-6 col-md-6 col-sm-12 mt-5">
+            <h2 class="mb-4 pt-5">{{ "info-form.formulaire" | translate }} </h2>
+            <p class="mb-4">
+              {{ "info-form.obligation-field" | translate }}
+             (<strong style="color:red">*</strong>)
+            </p>
+
+            <div class="center-vertical">
+              <form [formGroup]="aFormGroup" class="padding-vertical">
+                <ngx-recaptcha2
+                  #captchaElem
+                  [siteKey]="siteKey"
+                  formControlName="recaptcha"
+                >
+                </ngx-recaptcha2>
+              </form>
+
+              <!-- <button type="button" color="primary [disabled]="!aFormGroup.valid">Submit</button> -->
+
+              <!-- [disabled]="!aFormGroup.valid" -->
+              
+              <!-- <button
+                routerLink="/home"
+                class="request mt-3 mb-5"
+                href="#"
+                [disabled]="!aFormGroup.valid" 
+              >
+                Formulaire E-FES
+              </button> -->
+              <span style="display:flex;flex-direction: row; margin-top: 1rem;">
+                <!-- <button  style="background-color: #CB4335;" routerLink="/welcome" class="button"><span>Retour Acceuil</span></button> -->
+                <button  [disabled]="!aFormGroup.valid"  routerLink="/home" class="button"><span>E-FES</span></button>
+              </span>
+              
+            </div>
+          </span>
+        </div>
+  </div>
+</section>
+
+
+
+
+

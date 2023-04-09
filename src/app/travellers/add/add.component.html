@@ -1,0 +1,4136 @@
+<section class="form-content mt-5 form-zoom" id="app-form">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-md-12 col-lg-12 mx-auto float-none white px-2 rounded-card form-zoom"
+        id="form-app"
+      >
+        <div class="card-body">
+          <!-- form title -->
+          <div class="text-center mb-4 mt-5">
+            <div class="col-12">
+              <div class="d-flex justify-content-center">
+                <div class="ml-4 subtitle my-auto">
+                  <h4
+                    class="h3-responsive text-center derl-title font-weight-bold"
+                  ></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end form title -->
+          <!-- <hr /> -->
+          <div class="mt-">
+            <!-- <p class="font-weight-normal text-center">
+              {{ "main.page.intro" | translate }}
+            </p> -->
+          </div>
+
+          <!-- Form -->
+          <div class="row">
+            <div class="col-md-12 mx-auto my-2">
+              <!-- <p class="mt-2 text-danger text-center">
+                {{ "label.required" | translate }}
+              </p> -->
+
+              <mdb-stepper #stepper [linear]="true" [vertical]="isVertical">
+                <!-- <mdb-step name="" [stepForm]="userEmail" class="step1">
+                  <div class="email-validation">
+                    <div class="mb-3">
+                      <h3 class="section-title">
+                        Verification et validation par email
+                      </h3>
+                    </div>
+                    <form [formGroup]="userEmail">
+                      <div class="form-row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                          <label> {{'label.email' | translate}} <span class="text-danger"> * </span></label>
+                          <input type="email" formControlName="email" class="form-control">
+                          <div *ngIf="officialEmail.errors">
+                            <div *ngIf="officialEmail.errors.pattern">
+                              <span class="text-danger"> {{valideEmail}} </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                          <label> Confirmez email <span class="text-danger"> * </span></label>
+                          <input type="email" formControlName="emailConfirm"   class="form-control">
+                          <div *ngIf="confirmEmail.errors">
+                            <div *ngIf="confirmEmail.errors.pattern">
+                              <span class="text-danger"> {{valideEmail}} </span>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+                      </div>
+
+
+                      <div class="col-lg-6 col-md-6 col-sm-12 text-center mx-auto">
+                        <button mdbBtn [disabled]="!userEmail.valid" (click)="sendOTP()" class="btn btn-primary  my-4" type="button">
+                          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                          {{'next' | translate}} <mdb-icon fas icon="chevron-circle-right"></mdb-icon>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </mdb-step> -->
+
+                <!-- SECOND STEP -->
+                <!-- [stepForm]="infosForm" -->
+                <mdb-step
+                  [name]="'stepper.title.infoPers' | translate"
+                  class="step4"
+                  [stepForm]="infosForm"
+                >
+                  <!-- <div
+                    class="row align-items-center justify-content-center"
+                    id="lg-device"
+                  >
+                     <div class="col-lg-3 col-md-12 col-sm-12 box-form-info">
+                      <p class="form-info shadow p-3 mb-5 bg-white rounded">
+                        <i class="fas fa-info-circle fa-3x"></i>
+                        <strong>Remarque</strong>
+                        <br />
+
+                        {{ "info.remarqueStep1" | translate }}
+                      </p>
+                    </div> -->
+
+                  <form
+                    [formGroup]="infosForm"
+                    class="col-lg-12 col-md-12 col-sm-12"
+                  >
+                    <div class="infos-block">
+                      <div class="row center-horizontal">
+                        <img
+                          class="col-lg-4 col-md-4 col-sm-12 p-0"
+                          height="100"
+                          src="./../../../assets/img/form/personal_information.svg"
+                        />
+                        <div
+                          class="mb-3"
+                          class="col-lg-6 col-md-6 col-sm-12 p-0"
+                        >
+                          <!-- <h3 class="section-title step-title-size">
+                            {{ "info.perso" | translate }}
+                          </h3> -->
+                          <!-- <span style="color: brown"
+                            >Les données dont ils disposent (*) sont obligatoire
+                          </span> -->
+                        </div>
+                      </div>
+
+                      <fieldset>
+                        <legend>
+                          {{ "form.label.identification.passager" | translate }}
+                        </legend>
+
+                        <div class="form-row">
+                          <!-- ========= -->
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.lastname" | translate }}
+
+                              <span class="text-danger"> * </span></label
+                            >
+                            <!-- <small style="display:block;margin-top:0px">Votre nom de famille</small> -->
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="lastname"
+                                class="form-control"
+                                [placeholder]="
+                                  'field.placeholder.input.lastName' | translate
+                                "
+                              />
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ecrivez votre nom de famille"
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ekri siyatiw"
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <!-- ============== -->
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size"
+                              >{{ "form.label.firstname" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <!-- <small style="display:block;margin-top:0px">Votre nom</small> -->
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="firstname"
+                                class="form-control"
+                              />
+                              <small
+                                *ngIf="
+                                  firstname &&
+                                  firstname.invalid &&
+                                  firstname.touched
+                                "
+                                style="color: red"
+                                >this field is not valid</small
+                              >
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ecrivez votre prénom"
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ekri nonw"
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+                          <!-- =========== -->
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size form-label-size">
+                              {{ "form.label.gender" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <!-- <small style="display:block;margin-top:0px">Sélectionnez une option</small> -->
+                            <span class="tt-direc">
+                              <select
+                                class="browser-default custom-select"
+                                formControlName="sexe"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                  <!-- </option>
+                                <option>
+                                  {{ "form.label.gender" | translate }}
+                                </option> -->
+                                </option>
+
+                                <option>
+                                  {{ "form.label.gender-male" | translate }}
+                                </option>
+                                <option>
+                                  {{ "form.label.gender-female" | translate }}
+                                </option>
+                                <option>
+                                  {{ "form.label.gender-other" | translate }}
+                                </option>
+                              </select>
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Indiquez si vous êtes un homme, une femme ou autre."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Di siw se gason, fi oubyen on lot."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+                          <!-- ========= -->
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.date" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="date"
+                                formControlName="birthdate"
+                                (change)="birthDateLimit($event)"
+                                [max]="maxDate"
+                                class="form-control"
+                                style="width: 100%"
+                              />
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ecrivez votre date de naissance (mois / jour / année)."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Mete kilè ou fèt (mwa / jou / ane)."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <!-- ============= -->
+                          <div
+                            class="col-lg-4 col-md-4 col-sm-12 mb-4 mt-0"
+                            style="margin-top: -4px"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.nationality" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <!-- <small style="display:block;margin-top:0px">Sélectionnez une option</small> -->
+                            <span class="tt-direc">
+                              <ng-select
+                                (change)="onNationalityChange($event)"
+                                #select
+                                formControlName="nationality"
+                                [items]="countries | async"
+                                bindLabel="name"
+                                bindValue="name"
+                                style="width: 100%"
+                                [placeholder]="
+                                  'field.placeholder.select' | translate
+                                "
+                              >
+                              </ng-select>
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ecrivez votre nationalité."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Di sitwayen ki peyi ou ye."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+                          <!-- ====== -->
+                          <div
+                            id="birth-country"
+                            class="col-lg-4 col-md-4 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.birth-country" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <ng-select
+                                #select
+                                formControlName="birthCountry"
+                                [items]="countries | async"
+                                bindLabel="name"
+                                bindValue="name"
+                                style="width: 100%"
+                                [placeholder]="
+                                  'field.placeholder.select' | translate
+                                "
+                              >
+                              </ng-select>
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Indiquez le pays dans lequel vous êtes nés."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Chwazi peyi kote w fèt lan."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+                          <!-- ================ -->
+                          <div
+                            *ngIf="isHaitian"
+                            class="col-lg-4 col-md-4 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.cityOfBirth" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="cityOfBirth"
+                                class="form-control"
+                              />
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Indiquez votre ville de naissance."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ekri vil kote w fèt lan."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <!-- ========== -->
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.passportNumber" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="passportNumber"
+                                class="form-control"
+                                maxlength="12"
+                                minlength="7"
+                              />
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ecrivez le numéro de votre passeport."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ekri nimewo paspò w lan."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <!-- ============= -->
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.passportExpDate" | translate }}
+
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="date"
+                                formControlName="passportExpDate"
+                                (change)="passportExpDate($event)"
+                                [min]="passportExpMinDate"
+                                class="form-control"
+                              />
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="
+                                Indiquez la date d’expiration de votre passeport (mois / jour / année)
+                                ."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="
+                                Di nan ki dat paspò an ap fini (mwa / jou / ane)
+                                ."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <!-- ============= -->
+                          <!-- <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              Date d'expiration du passport
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                            <input
+                              type="date"
+                              formControlName="passportExpDate"
+                              (change)="passportExpDate($event)"
+                              [min]="passportExpMinDate"
+                              class="form-control"
+                            />
+                            <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div> -->
+                          <!-- ============= -->
+
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "label.email" | translate }}
+                              <span class="text-danger"> </span
+                            ></label>
+                            <!-- formControlName="email"  -->
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="email"
+                                class="form-control"
+                              />
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="
+                                Ecrivez votre adresseélectronique (exemple@gmail.com)
+                                ."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="
+                                Ekri kont email ou itilize an (egaznp@gmail.com)
+                                ."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+                          <!-- ================= -->
+
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.phone.cont" | translate }}
+
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="phone"
+                                class="form-control"
+                              />
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ecrivez votre numéro de téléphone."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Ekri nimewo telefòn ou."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <!-- =========== -->
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size form-label-size">
+                              {{ "form.label.etatCivile" | translate }}
+
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <select
+                                class="browser-default custom-select"
+                                (change)="onTravelModeChange($event)"
+                                formControlName="etatCivil"
+                                placeholder="choisie"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+                                <option>
+                                  {{ "form.label.celibataire" | translate }}
+                                </option>
+                                <option value="1">
+                                  {{ "form.label.marie" | translate }}
+                                </option>
+                                <option value="3">
+                                  {{ "form.label.veuf" | translate }}
+                                </option>
+                                <option value="2">
+                                  {{ "form.label.divorce" | translate }}
+                                </option>
+                              </select>
+                              <!-- ================== -->
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Indiquez votre situation dans la société (marié, divorcé, célibataire, veuf ou veuve)."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="
+                                Di si w marye, divòse, selibatè, vèf oubyen vèv
+                                ."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <!-- =============== -->
+                          <!-- <div
+                            *ngIf="isHaitian"
+                            class="col-lg-4 col-md-4 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.cityOfBirth" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="cityOfBirth"
+                                class="form-control"
+                              />
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div> -->
+                          <!-- ========= -->
+
+                          <!-- <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.resident" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <ng-select
+                              (change)="isResident($event)"
+                              #select
+                              formControlName="resident"
+                              [items]="countries | async"
+                              bindLabel="name"
+                              bindValue="name"
+                            >
+                            </ng-select>
+                          </div> -->
+                        </div>
+                      </fieldset>
+
+                      <!-- <fieldset *ngIf="!isResidentHaiti">
+                                <legend></legend>
+                                <div  class="row">
+
+
+                                </div>
+                              </fieldset> -->
+
+                      <fieldset class="mt-4">
+                        <legend>
+                          {{ "form.label.adresse.residence" | translate }}
+                        </legend>
+                        <div class="form-row">
+                          <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.resident" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <ng-select
+                                (change)="isResident($event)"
+                                #select
+                                formControlName="resident"
+                                [items]="countries | async"
+                                bindLabel="name"
+                                bindValue="name"
+                                style="width: 100%"
+                              >
+                              </ng-select>
+                              <!-- FR -->
+                              <div
+                                *ngIf="currentLanguage == 'FR'"
+                                class="tt tooltip-left"
+                                data-tooltip="Indiquez le pays ou vous vivez actuellement."
+                              >
+                                ?
+                              </div>
+                              <!-- HT -->
+                              <div
+                                *ngIf="currentLanguage == 'HT'"
+                                class="tt tooltip-left"
+                                data-tooltip="Di nan ki peyi wap viv kounya la."
+                              >
+                                ?
+                              </div>
+
+                              <!-- EN -->
+                              <div
+                                *ngIf="currentLanguage == 'EN'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ES -->
+                              <div
+                                *ngIf="currentLanguage == 'ES'"
+                                class="tt tooltip-left"
+                                data-tooltip="."
+                              >
+                                ?
+                              </div>
+                              <!-- ================= -->
+                            </span>
+                          </div>
+
+                          <div *ngIf="!isResidentHaiti" class="row">
+                            <!-- ========== -->
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+    <label class="form-label-size">
+      {{
+        "form.label.pays.residence.foreign"
+          | translate
+      }}
+      <span class="text-danger"> * </span></label
+    >
+    <ng-select
+      #select
+      formControlName="country"
+      [items]="countries | async"
+      bindLabel="name"
+      [placeholder]=" 'field.placeholder.select' | translate "
+      bindValue="name"
+    >
+    </ng-select>
+  </div> -->
+
+                            <!-- ============== -->
+                            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                              <label class="form-label-size">
+                                {{ "form.label.ville" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <span class="tt-direc">
+                                <input
+                                  type="text"
+                                  formControlName="street"
+                                  class="form-control"
+                                />
+                                <!-- ================== -->
+                                <!-- FR -->
+                                <div
+                                  *ngIf="currentLanguage == 'FR'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="Indiquez la ville ou vous vivez actuellement."
+                                >
+                                  ?
+                                </div>
+                                <!-- HT -->
+                                <div
+                                  *ngIf="currentLanguage == 'HT'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="Di nan ki vil wap viv kounya la."
+                                >
+                                  ?
+                                </div>
+
+                                <!-- EN -->
+                                <div
+                                  *ngIf="currentLanguage == 'EN'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ES -->
+                                <div
+                                  *ngIf="currentLanguage == 'ES'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ================= -->
+                              </span>
+                            </div>
+                            <!-- ========== -->
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+                              <label class="form-label-size">
+                                {{ "form.label.etat.region" | translate }}
+
+                                <span class="text-danger"> * </span></label
+                              >
+                              <span class="tt-direc">
+                                <input
+                                  type="text"
+                                  formControlName="city"
+                                  class="form-control"
+                                />
+                                <!-- ================== -->
+                                <!-- FR -->
+                                <div
+                                  *ngIf="currentLanguage == 'FR'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="Indiquez la zone dans laquelle vous vivez actuellement."
+                                >
+                                  ?
+                                </div>
+                                <!-- HT -->
+                                <div
+                                  *ngIf="currentLanguage == 'HT'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="Mete adrès ou rete ."
+                                >
+                                  ?
+                                </div>
+
+                                <!-- EN -->
+                                <div
+                                  *ngIf="currentLanguage == 'EN'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ES -->
+                                <div
+                                  *ngIf="currentLanguage == 'ES'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ================= -->
+                              </span>
+                            </div>
+
+                            <!-- ============ -->
+                            <div class="col-lg-3 col-md-3 col-sm-12 mb-4">
+                              <label class="form-label-size">
+                                {{ "form.label.code.posta" | translate }}
+
+                                <span class="text-danger"> * </span></label
+                              >
+                              <span class="tt-direc">
+                                <input
+                                  type="tel"
+                                  formControlName="codePostal"
+                                  class="form-control"
+                                  maxlength="7"
+                                />
+                                <!-- ================== -->
+                                <!-- FR -->
+                                <div
+                                  *ngIf="currentLanguage == 'FR'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="Ecrivez votre code postal."
+                                >
+                                  ?
+                                </div>
+                                <!-- HT -->
+                                <div
+                                  *ngIf="currentLanguage == 'HT'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="mete kod postal zon wap viv lan."
+                                >
+                                  ?
+                                </div>
+
+                                <!-- EN -->
+                                <div
+                                  *ngIf="currentLanguage == 'EN'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ES -->
+                                <div
+                                  *ngIf="currentLanguage == 'ES'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ================= -->
+                              </span>
+                            </div>
+
+                            <div class="col-lg-9 col-md-9 col-sm-12 mb-4">
+                              <label class="form-label-size">
+                                {{ "form.label.adresse" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <span class="tt-direc">
+                                <input
+                                  type="text"
+                                  formControlName="addressResidence"
+                                  class="form-control"
+                                  placeholder="1, Angle Avenue Maïs Gaté et, Rue Jacques Roumain"
+                                />
+                                <!-- ================== -->
+                                <!-- FR -->
+                                <div
+                                  *ngIf="currentLanguage == 'FR'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="Indiquez votre adresse actuelle."
+                                >
+                                  ?
+                                </div>
+                                <!-- HT -->
+                                <div
+                                  *ngIf="currentLanguage == 'HT'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="Mete nimewo kay ou epi di nan ki katye ou rete."
+                                >
+                                  ?
+                                </div>
+
+                                <!-- EN -->
+                                <div
+                                  *ngIf="currentLanguage == 'EN'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ES -->
+                                <div
+                                  *ngIf="currentLanguage == 'ES'"
+                                  class="tt tooltip-left"
+                                  data-tooltip="."
+                                >
+                                  ?
+                                </div>
+                                <!-- ================= -->
+                              </span>
+                            </div>
+                          </div>
+                          <!-- =================HAITI ADDRESS -->
+                          <!-- ======= -->
+                          <!-- <div
+                            *ngIf="isResidentHaiti"
+                            class="col-12 text-center mt-3"
+                          >
+                            <h3>Adresse en haiti</h3>
+                            <hr />
+                          </div> -->
+
+                          <!-- ========== -->
+
+                          <!-- ----------- -->
+
+                          <div
+                            *ngIf="isResidentHaiti"
+                            class="col-lg-4 col-md-4 col-sm-12 mt-1 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.departement" | translate }}
+                              <span class="text-danger"> * </span>
+                            </label>
+                            <ng-select
+                              #select
+                              (change)="ifDeptLieuSelected($event)"
+                              formControlName="departementId"
+                              [items]="dept | async"
+                              dropdownPosition="bottom"
+                              bindLabel="name"
+                              bindValue="code"
+                            >
+                            </ng-select>
+                          </div>
+
+                          <!-- ============ -->
+                          <div
+                            *ngIf="isResidentHaiti"
+                            class="col-lg-4 col-md-4 col-sm-12 mt-1 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.communes" | translate }}
+                              <span class="text-danger"> * </span>
+                            </label>
+                            <ng-select
+                              #select
+                              formControlName="communeId"
+                              [items]="communeLieu | async"
+                              bindLabel="name"
+                              dropdownPosition="bottom"
+                              bindValue="code"
+                            >
+                            </ng-select>
+                          </div>
+
+                          <!-- ============= -->
+                          <div
+                            *ngIf="isResidentHaiti"
+                            class="col-lg-12 col-md-12 col-sm-12 col-sm-12 mt-1 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.address" | translate }}
+                              <span class="text-danger">*</span>
+                            </label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="1, Angle Avenue Maïs Gaté et, Rue Jacques Roumain"
+                              formControlName="streetAddress"
+                            />
+                          </div>
+
+                          <!-- =============== -->
+                          <!-- <div
+                            *ngIf="isResidentHaiti"
+                            class="col-lg-4 col-md-4 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "label.phone" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="tel"
+                                formControlName="phone"
+                                class="form-control"
+                              />
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div> -->
+                          <!-- ========== -->
+                        </div>
+                      </fieldset>
+
+                      <!-- <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+          <label> {{'label.email' | translate}} <span class="text-danger"> * </span></label>
+          <input type="email" formControlName="email" class="form-control">
+          <div *ngIf="officialEmail.errors">
+            <div *ngIf="officialEmail.errors.pattern">
+              <span class="text-danger"> {{valideEmail}} </span>
+            </div>
+          </div>
+        </div> -->
+
+                      <!-- break -->
+                      <!-- <div class="separator py-2">
+        <hr />
+      </div> -->
+                      <!--  -->
+                      <!-- <div class="col-12 mt-3 mb-2">
+        <h3 class="section-title">
+          {{ "info.urgence" | translate }}
+        </h3>
+      </div>
+      <div class="form-row">
+        <div class="col-lg-12 col-md-12 col-sm-12 mt-1 mb-4">
+          <label>
+            Hébergement<span class="text-danger">*</span>
+          </label>
+          <select
+            class="browser-default custom-select"
+            (change)="isHotelChange($event)"
+            formControlName="lieuSejour"
+          >
+            <option [ngValue]="null" selected disabled>
+              Hébergement
+            </option>
+            <option value="Hotel">Hotel</option>
+            <option value="Residence privee">
+              Residence privee
+            </option>
+          </select>
+        </div>
+
+        <div
+          *ngIf="isHotel"
+          class="col-lg-12 col-md-12 col-sm-12 mt-1 mb-4"
+        >
+          <label>
+            Nom de l'hotel
+            <span class="text-danger">*</span></label
+          >
+          <input
+            type="text"
+            formControlName="hotelResider"
+            class="form-control"
+          />
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+          <label>
+            Departement <span class="text-danger"> * </span>
+          </label>
+          <ng-select
+            #select
+            (change)="ifDeptLieuSelected($event)"
+            formControlName="departementId"
+            [items]="dept | async"
+            dropdownPosition="bottom"
+            bindLabel="name"
+            bindValue="code"
+          >
+          </ng-select>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+          <label>
+            Commune <span class="text-danger"> * </span>
+          </label>
+          <ng-select
+            #select
+            formControlName="communeId"
+            [items]="communeLieu | async"
+            bindLabel="name"
+            dropdownPosition="bottom"
+            bindValue="code"
+          >
+          </ng-select>
+        </div>
+
+        <div
+          class="col-lg-12 col-md-12 col-sm-12 col-sm-12 mt-1 mb-4"
+        >
+          <label>
+            {{ "form.label.address" | translate }}
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="1, Angle Avenue Maïs Gaté et, Rue Jacques Roumain"
+            formControlName="streetAddress"
+          />
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12">
+          <p class="lead">Personne contact</p>
+          <hr />
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+          <label> Nom complet (Personne contact) </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="contactName"
+          />
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+          <label> Telephonne (Personne contact) </label>
+          <input
+            type="text"
+            #contactPhone
+            (keyup)="phoneValidation($event)"
+            prefix="+509 "
+            [showMaskTyped]="true"
+            [validation]="true"
+            mask="0000-0000"
+            class="form-control"
+            minlength="8"
+            formControlName="contactPhone"
+          />
+          <div *ngIf="officialPhone.errors">
+            <span class="text-danger">
+              Veuillez entrer un numero de telephone local
+              valide.</span
+            >
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+          <label> Departement </label>
+          <ng-select
+            #select
+            (change)="ifDeptAdressSelected($event)"
+            formControlName="contactDepartementId"
+            [items]="dept | async"
+            dropdownPosition="bottom"
+            bindLabel="name"
+            bindValue="code"
+          >
+          </ng-select>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+          <label> Commune </label>
+          <ng-select
+            #select
+            formControlName="contactCommuneId"
+            [items]="communeAdress | async"
+            bindLabel="name"
+            dropdownPosition="bottom"
+            bindValue="code"
+          >
+          </ng-select>
+        </div>
+        <div
+          class="col-lg-12 col-md-12 col-sm-12 col-sm-12 mt-1 mb-4"
+        >
+          <label>
+            {{ "form.label.address" | translate }}
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="#1, Angle Avenue Maïs Gaté et, Rue Jacques Roumain"
+            formControlName="contactAdress"
+          />
+        </div>
+      </div>
+      <div
+        class="text-justify col-lg-12 col-md-12 col-sm-12 mt-4"
+      >
+        <div class="d-flex">
+          <div class="mr-2">
+            <input
+              type="checkbox"
+              id="agree2"
+              name="agree2"
+              value="true"
+              formControlName="agree2"
+            />
+          </div>
+          <div class="ml-auto">
+            <label class="font-weight-normal" for="agree2">
+              {{ "quarantine" | translate }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="text-justify col-lg-12 col-md-12 col-sm-12 mt-4"
+      >
+        <div class="d-flex">
+          <div class="mr-2">
+            <input
+              type="checkbox"
+              id="agree"
+              name="agree"
+              value="true"
+              formControlName="agree"
+            />
+          </div>
+          <div class="ml-auto">
+            <label class="font-weight-normal" for="agree">
+              {{ "agree" | translate }}
+            </label>
+          </div>
+        </div>
+      </div> -->
+                      <!--  -->
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-12 text-center mx-auto"
+                      >
+                        <!-- <button
+            mdbBtn
+            (click)="stepper.previous()"
+            color="primary"
+            outline="true"
+            class="my-4"
+            type="button"
+          >
+            <mdb-icon fas icon="chevron-circle-left"></mdb-icon>
+            {{ "back" | translate }}
+          </button> -->
+                        <button
+                          [disabled]="!infosForm.valid"
+                          class="btn btn-primary my-4"
+                          type="button"
+                          (click)="stepper.next()"
+                        >
+                          <!-- <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span> -->
+                          {{ "btn.next" | translate }}
+                          <mdb-icon fas icon="chevron-circle-right"></mdb-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- </div> -->
+                </mdb-step>
+
+                <!-- [stepForm]="travelForm" -->
+                <mdb-step
+                  [name]="'stepper.title.infoVoyage' | translate"
+                  class="step2"
+                  [stepForm]="travelForm"
+                >
+                  <!-- <div class="row align-items-center justify-content-center">
+                  <div class="col-lg-3 col-md-12 col-sm-12 box-form-info">
+                    <p class="form-info shadow p-3 mb-5 bg-white rounded">
+                      <i class="fas fa-info-circle fa-3x"></i>
+                      <strong>Remarque</strong>
+                      <br />
+
+                      {{ "info.remarqueStep1" | translate }}
+                    </p>
+                  </div> -->
+                  <form
+                    [formGroup]="travelForm"
+                    class="col-lg-12 col-md-12 col-sm-12"
+                  >
+                    <div class="travel-block">
+                      <!-- <div class="mb-3">
+                        <h3 class="section-title step-title-size">
+                          {{ "info.voyage" | translate }}
+                        </h3>
+                      </div> -->
+                      <div class="row center-horizontal">
+                        <img
+                          class="col-lg-4 col-md-4 col-sm-12 p-0"
+                          height="100"
+                          src="./../../../assets/img/form/travel_info.svg"
+                        />
+                        <div
+                          class="mb-3"
+                          class="col-lg-6 col-md-6 col-sm-12 p-0"
+                        >
+                          <!-- <h3 class="section-title step-title-size">
+                          {{ "info.voyage" | translate }}
+                        </h3> -->
+                          <span style="color: brown">
+                            <!-- Les données dont ils disposent (*) sont obligatoire -->
+                          </span>
+                        </div>
+                      </div>
+
+                      <!-- Form group -->
+                      <fieldset>
+                        <legend>{{ "info.voyage" | translate }}</legend>
+                        <div class="form-row">
+                          <!-- button  -->
+
+                          <div
+                            class="custom-control ml-3 custom-radio custom-control-inline pl-4 col-lg-6 col-md-6 col-sm-12 mb-b"
+                          >
+                            <input
+                              (change)="isDepart($event)"
+                              type="radio"
+                              value="arrive"
+                              class="custom-control-input"
+                              id="arrive"
+                              name="option"
+                              formControlName="option"
+                            />
+
+                            <label
+                              class="custom-control-label form-label-size"
+                              for="arrive"
+                              >{{ "label.travel.arrive" | translate }}</label
+                            >
+                          </div>
+
+                          <!-- ===== -->
+                          <div
+                            class="custom-control ml-3 custom-radio pl-4 custom-control-inline col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <input
+                              (change)="isDepart($event)"
+                              type="radio"
+                              value="depart"
+                              class="custom-control-input"
+                              id="depart"
+                              name="option"
+                              checked="true"
+                            />
+
+                            <label
+                              class="custom-control-label form-label-size"
+                              for="depart"
+                              >{{ "label.travel.leave" | translate }}</label
+                            >
+                          </div>
+                          <!-- ===== -->
+                          <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                            <label class="form-label-size form-label-size">
+                              {{ "label.travel.mode" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <select
+                                class="browser-default custom-select"
+                                (change)="onTravelModeChange($event)"
+                                formControlName="travelTypeId"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+
+                                <option value="1">
+                                  {{ "travel.mode.air" | translate }}
+                                </option>
+                                <option value="3">
+                                  {{ "travel.mode.earth" | translate }}
+                                </option>
+                                <option value="2">
+                                  {{ "travel.mode.sea" | translate }}
+                                </option>
+                              </select>
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label class="form-label-size">
+                              {{ "form.date.voyage" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="date"
+                                (change)="voyageDateLimit($event)"
+                                class="form-control"
+                                [min]="maxDate"
+                                formControlName="dateVoyage"
+                              />
+                              <span *ngIf="voyagedateLimit" class="text-danger">
+                                La date du voyage ne peut precéder a la date
+                                d'aujourd'hui
+                              </span>
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <!-- ---- ==================================-->
+                          <!-- *ngIf="!isHaitian" -->
+                          <div
+                            class="col-lg-6 col-md-6 col-sm-12"
+                            id="toggle-switch"
+                            *ngIf="isArrive && !isHaitian"
+                          >
+                            <div
+                              class="row d-flex justify-content-center align-items-center"
+                            >
+                              <p
+                                class="col-lg-7 col-md-7 col-sm-12"
+                                style="margin: 0px"
+                              >
+                                {{ "form.label.etranger" | translate }}
+                              </p>
+
+                              <div
+                                class="toggle-radio col-lg-5 col-md-5 col-sm-12"
+                                style="display: inline"
+                              >
+                                <input
+                                  type="radio"
+                                  value="oui"
+                                  name="rdo"
+                                  id="yes30"
+                                  formControlName="residentHaiti"
+                                  (click)="
+                                    SetNotHaitianAnResidentInHaiti($event)
+                                  "
+                                />
+                                <input
+                                  type="radio"
+                                  value="non"
+                                  name="rdo"
+                                  formControlName="residentHaiti"
+                                  id="no30"
+                                  (click)="
+                                    SetNotHaitianAnResidentInHaiti($event)
+                                  "
+                                />
+                                <div class="switch">
+                                  <label for="yes30">{{
+                                    "form.label.OUI" | translate
+                                  }}</label>
+                                  <label for="no30">{{
+                                    "form.label.NON" | translate
+                                  }}</label>
+                                  <span></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            *ngIf="isArrive && !isHaitian"
+                            class="col-lg-6 col-md-6 col-sm-12"
+                          ></div>
+                          <!-- ---- -->
+                          <!--
+                        <div
+                          *ngIf="NotHaitianAndResideInHaiti"
+                          class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                        >
+                          <label class="form-label-size">
+                            Entrez votre numéro de résidence
+                            <span class="text-danger"> * </span></label
+                          >
+                          <span class="tt-direc">
+                            <input
+                              type="text"
+                              formControlName="residenceNumber"
+                              class="form-control"
+                            />
+                            <div
+                              class="tt tooltip-left"
+                              data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                            >
+                              ?
+                            </div>
+                          </span>
+                        </div> -->
+
+                          <!--  -->
+
+                          <!-- <div class="col-lg-6 col-md-4 col-sm-12 mb-4">
+                          <label>
+                            {{ "label.travel.action" | translate }}
+                            <span class="text-danger"> * </span></label
+                          >
+                          <span class="tt-direc">
+                            <select
+                              class="browser-default custom-select"
+                              (change)="onTravelModeChange($event)"
+                              formControlName="travelTypeId"
+                            >
+                              <option [ngValue]="null" selected disabled>
+                                {{ "label.travel.action" | translate }}
+                              </option>
+                              <option value="1">
+                                {{ "label.travel.arrive" | translate }}
+                              </option>
+                              <option value="2">
+                                {{ "label.travel.leave" | translate }}
+                              </option>
+                            </select>
+                            <div
+                              class="tt"
+                              href="#"
+                              data-tooltip="Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              data-tooltip-location="right"
+                            >
+                              ?
+                            </div>
+                          </span>
+                        </div> -->
+
+                          <!-- <div class="col-lg-6 col-md-4 col-sm-12 mb-4"></div> -->
+
+                          <div
+                            *ngIf="isAir"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size form-label-size">
+                              {{ "form.label.airline" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <select
+                                (change)="isOtherAirline($event)"
+                                class="browser-default custom-select"
+                                formControlName="compagnyVoyage"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+
+                                <option>American Airlines</option>
+                                <option>JetBlue</option>
+                                <option>Delta</option>
+                                <option>Spirit Airlines</option>
+                                <option>Air France</option>
+                                <option>US Airways</option>
+                                <option>Copa</option>
+                                <option>Sunrise Airways</option>
+                                <option>Century Airlines</option>
+                                <option value="-1">Autres..</option>
+                              </select>
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <div
+                            *ngIf="isOtherAirlineCheck"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size form-label-size">
+                              {{ "field.autre.compagnieAer" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="othercompagnyVoyage"
+                              />
+
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <div
+                            *ngIf="isAir"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size form-label-size">
+                              {{ "form.label.flight" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="flightNumber"
+                                maxlength="8"
+                              />
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+
+                            <!-- <label class="form-label-size form-label-size">
+                            {{ "form.label.flight" | translate }}
+                            <span class="text-danger"> * </span></label
+                          >
+                          <span class="tt-direc">
+                            <select
+                              class="browser-default custom-select"
+                              (change)="onTravelModeChange($event)"
+                              formControlName="flightNumber"
+                            >
+                              <option [ngValue]="null" selected disabled>
+                                {{ "form.label.flight" | translate }}
+                              </option>
+                            </select>
+                            <div
+                              class="tt"
+                              href="#"
+                              data-tooltip="Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              data-tooltip-location="right"
+                            >
+                              ?
+                            </div>
+                          </span> -->
+                          </div>
+                          <!-- display these fields if "terre" was selected -->
+                          <div
+                            *ngIf="isTerre"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "transportType" | translate }}
+                              <span class="text-danger"> * </span>
+                            </label>
+                            <span class="tt-direc">
+                              <select
+                                (change)="onTransportTypeChange($event)"
+                                formControlName="typeGroundTranport"
+                                class="browser-default custom-select"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+                                <option value="1">
+                                  {{ "select.field.bus" | translate }}
+                                </option>
+                                <option value="2">
+                                  {{ "select.field.vehicule" | translate }}
+                                </option>
+                                <option value="3">
+                                  {{ "select.field.autre" | translate }}
+                                </option>
+                              </select>
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <!-- display these fields if "Bus" was selected -->
+                          <div
+                            *ngIf="isBus && !isAir"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.transport" | translate }}
+                              <span class="text-danger"> * </span>
+                            </label>
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="compagnyTransport"
+                              />
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <div
+                            *ngIf="isBus && !isAir"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "transportNumber" | translate
+                              }}<span class="text-danger"> * </span>
+                            </label>
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="numeroTransport"
+                              />
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <!-- Vehicule -->
+                          <div
+                            *ngIf="isVehicule && !isAir && !isSea"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.marque" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="marque"
+                              />
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <div
+                            *ngIf="isVehicule && !isAir && !isSea"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.matricule" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="plaque"
+                              />
+
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <div
+                            *ngIf="
+                              isNone &&
+                              !isBus &&
+                              !isVehicule &&
+                              !isAir &&
+                              !isSea
+                            "
+                            class="col-lg-12 col-md-12 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.field.specifier" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <textarea
+                                class="form-control"
+                                rows="3"
+                                formControlName="precision"
+                              >
+                              </textarea>
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <div
+                            *ngIf="!isHaitian && isArrive"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.travel-reason" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <select
+                                class="form-control"
+                                formControlName="travelMotif"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+                                <option value="{{ 'business' | translate }}">
+                                  {{ "business" | translate }}
+                                </option>
+                                <option value="{{ 'tourism' | translate }}">
+                                  {{ "tourism" | translate }}
+                                </option>
+                                <option
+                                  value="{{ 'back-to-country' | translate }}"
+                                >
+                                  {{ "back-to-country" | translate }}
+                                </option>
+                              </select>
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+                          <div
+                            *ngIf="isAir"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size form-label-size">
+                              {{ "label.travel.point.entre" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <select
+                                (change)="otherEmbarquement($event, 'emb')"
+                                class="browser-default custom-select"
+                                formControlName="pontDEmbarqueMent"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+                                <option *ngFor="let e of embarquement">
+                                  {{ e }}
+                                </option>
+                              </select>
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+                          <div
+                            *ngIf="isOtherEmb"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size form-label-size">
+                              {{ "field.autre.embarquement" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="otherpontDEmbarqueMent"
+                              />
+
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+                          <div
+                            *ngIf="isAir"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size form-label-size">
+                              {{ "label.travel.point.sortie" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <select
+                                (change)="otherEmbarquement($event, 'deb')"
+                                class="browser-default custom-select"
+                                formControlName="pontDEdesmbarqueMent"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+                                <option *ngFor="let d of debarquement">
+                                  {{ d }}
+                                </option>
+                              </select>
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+                          <div
+                            *ngIf="isOtherDeb"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size form-label-size">
+                              {{ "field.autre.debarquement" | translate }}
+
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="otherpontDEdesmbarqueMent"
+                              />
+
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <!-- *ngIf="!isHaitian" -->
+                          <div
+                            *ngIf="NotHaitianAndResideInHaiti"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.numero" | translate }}
+                            </label>
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                maxlength="10"
+                                class="form-control"
+                                formControlName="numeroVisaOrPermis"
+                              />
+
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+                          <!-- *ngIf="!isHaitian" -->
+                          <div
+                            *ngIf="NotHaitianAndResideInHaiti"
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "form.label.lieuDemission" | translate }}
+                            </label>
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="issueAt"
+                              />
+                              <span *ngIf="voyagedateLimit" class="text-danger">
+                                La date du voyage ne peut precéder a la date
+                                d'aujourd'hui
+                              </span>
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+
+                          <!-- *ngIf="!isHaitian && !isResidentHaiti" -->
+                          <div
+                            *ngIf="
+                              !NotHaitianAndResideInHaiti &&
+                              isArrive &&
+                              !isHaitian
+                            "
+                            class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <label class="form-label-size">
+                              {{ "label.sejour" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="number"
+                                maxlength="3"
+                                class="form-control"
+                                formControlName="dureeSejour"
+                              />
+
+                              <div
+                                class="tt tooltip-left"
+                                href="#"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+                      </fieldset>
+
+                      <fieldset class="mt-4" *ngIf="isArrive">
+                        <legend>
+                          {{ "form.label.adressahaiti" | translate }}
+                        </legend>
+
+                        <div class="form-row">
+                          <!-- ------------ -->
+                          <!-- *ngIf="!isResidentHaiti" -->
+
+                          <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.departement" | translate }}
+                              <span class="text-danger"> * </span>
+                            </label>
+                            <ng-select
+                              #select
+                              (change)="ifDeptLieuSelected($event)"
+                              formControlName="departementId_ArriverHaiti"
+                              [items]="dept | async"
+                              dropdownPosition="bottom"
+                              bindLabel="name"
+                              bindValue="code"
+                            >
+                            </ng-select>
+                          </div>
+
+                          <!-- ============ -->
+                          <!-- *ngIf="isResidentHaiti" -->
+                          <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.communes" | translate }}
+                              <span class="text-danger"> * </span>
+                            </label>
+                            <ng-select
+                              #select
+                              formControlName="communeId_ArriverHaiti"
+                              [items]="communeLieu | async"
+                              bindLabel="name"
+                              dropdownPosition="bottom"
+                              bindValue="code"
+                            >
+                            </ng-select>
+                          </div>
+                          <!-- =========== -->
+                          <div class="col-lg-9 col-md-9 col-sm-12 mb-4">
+                            <label class="form-label-size">
+                              {{ "form.label.adresse" | translate }}
+                              <span class="text-danger"> * </span></label
+                            >
+                            <span class="tt-direc">
+                              <input
+                                type="text"
+                                formControlName="streetAddress_ArriverHaiti"
+                                class="form-control"
+                                placeholder=" Delmas 40B , Rue borgella H44"
+                              />
+                              <div
+                                class="tt tooltip-left"
+                                data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                              >
+                                ?
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </form>
+                  <!-- <div class="col-lg-3 col-md-3 col-sm-12 box-form-info">
+                    <p class="form-info shadow p-3 mb-5 bg-white rounded">
+                      <i class="fas fa-info-circle fa-3x"></i>
+                      <strong>Remarque</strong>
+                      <br />
+
+                      {{ "info.remarqueStep1" | translate }}
+                    </p>
+                  </div> -->
+                  <!-- </div> -->
+
+                  <div class="col-lg-6 col-md-6 col-sm-12 text-center mx-auto">
+                    <!-- <button mdbBtn (click)="stepper.previous()" color="primary" outline="true" class="my-4" type="button">
+                    <mdb-icon fas icon="chevron-circle-left"></mdb-icon> {{'back' | translate}}
+                  </button> -->
+                    <button
+                      mdbBtn
+                      (click)="stepper.previous()"
+                      color="primary"
+                      outline="true"
+                      class="my-4"
+                      type="button"
+                    >
+                      <mdb-icon fas icon="chevron-circle-left"></mdb-icon>
+                      {{ "btn.back" | translate }}
+                    </button>
+
+                    <button
+                      [disabled]="!travelForm.valid"
+                      (click)="stepper.next()"
+                      class="btn btn-primary my-4"
+                      type="button"
+                    >
+                      {{ "btn.next" | translate }}
+                      <mdb-icon fas icon="chevron-circle-right"></mdb-icon>
+                    </button>
+                  </div>
+                </mdb-step>
+
+                <!-- <mdb-step name="" [stepForm]="healthyForm" class="step3">
+                  <form [formGroup]="healthyForm">
+                    <div class="healthy-block">
+                      <div class="mb-3">
+                        <h3 class="section-title">
+                          {{ "info.sante" | translate }}
+                        </h3>
+                      </div>
+                      <div class="form-row">
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
+                          <label>
+                            {{ "pcr.test" | translate }}
+                            <span class="text-danger"> * </span></label
+                          >
+                          <br />
+                          <div
+                            class="custom-control custom-radio custom-control-inline mr-3"
+                          >
+                            <input
+                              (click)="isTestTrue($event)"
+                              formControlName="isTestPCR"
+                              type="radio"
+                              value="true"
+                              class="custom-control-input"
+                              id="pcr-yes"
+                              name="isTestPCR"
+                            />
+                            <label class="custom-control-label" for="pcr-yes">{{
+                              "label.yes" | translate
+                            }}</label>
+                          </div>
+
+                          <div
+                            class="custom-control custom-radio custom-control-inline"
+                          >
+                            <input
+                              (click)="isTestFalse($event)"
+                              formControlName="isTestPCR"
+                              type="radio"
+                              value="false"
+                              class="custom-control-input"
+                              id="pcr-no"
+                              name="isTestPCR"
+                            />
+                            <label class="custom-control-label" for="pcr-no">{{
+                              "label.no" | translate
+                            }}</label>
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="isTestedPCR"
+                          class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                        >
+                          <label>
+                            {{ "isTested.label" | translate }}
+                            <span class="text-danger"> * </span></label
+                          >
+                          <br />
+                          <div
+                            class="custom-control custom-radio custom-control-inline mr-4"
+                          >
+                            <input
+                              type="radio"
+                              (change)="checkTest($event)"
+                              value="true"
+                              class="custom-control-input"
+                              id="yes_tested"
+                              name="isTestedPCR"
+                              formControlName="isTestedPCR"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="yes_tested"
+                              >{{ "label.yes" | translate }}</label
+                            >
+                          </div>
+
+                          <div
+                            class="custom-control custom-radio custom-control-inline"
+                          >
+                            <input
+                              type="radio"
+                              (change)="checkTest($event)"
+                              value="false"
+                              class="custom-control-input"
+                              id="no_tested"
+                              name="isTestedPCR"
+                              formControlName="isTestedPCR"
+                            />
+                            <label
+                              class="custom-control-label"
+                              for="no_tested"
+                              >{{ "label.no" | translate }}</label
+                            >
+                          </div>
+                          <div>
+                            <span *ngIf="isQuestion" class="text-danger">
+                              {{ question }}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div
+                          *ngIf="isTestedPCR"
+                          class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                        >
+                          <label>
+                            {{ "pcr.date" | translate }}
+                            <span class="text-danger"> * </span></label
+                          >
+                          <input
+                            type="date"
+                            (change)="testDateLimit($event)"
+                            [max]="maxDate"
+                            formControlName="dateTestPCR"
+                            class="form-control"
+                          />
+
+                        </div>
+                        <div
+                          *ngIf="isTestedPCR"
+                          class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                        >
+                          <label>
+                            {{ "pcr.doc" | translate }}
+                            <strong>(.jpeg, .png, .jpg)</strong>
+                            <span class="text-danger"> * </span>
+                          </label>
+                          <input
+                            [disabled]="!isFile"
+                            type="file"
+                            (change)="uploadTestFile($event)"
+                            class="form-control"
+                          />
+                          <input
+                            type="hidden"
+                            formControlName="doctestPcr"
+                            class="form-control"
+                          />
+                          <span
+                            class="d-block text-danger"
+                            *ngIf="isPcrTestImg"
+                          >
+                            {{ badFile }}
+                          </span>
+                        </div>
+                      </div>
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-12 text-center mx-auto"
+                      >
+                        <button
+                          mdbBtn
+                          (click)="stepper.previous()"
+                          color="primary"
+                          outline="true"
+                          class="my-4"
+                          type="button"
+                        >
+                          <mdb-icon fas icon="chevron-circle-left"></mdb-icon>
+                          {{ "back" | translate }}
+                        </button>
+                        <button
+                          [disabled]="!healthyForm.valid"
+                          (click)="validateTest()"
+                          class="btn btn-primary my-4"
+                          type="button"
+                        >
+                          {{ "next" | translate }}
+                          <mdb-icon fas icon="chevron-circle-right"></mdb-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </mdb-step> -->
+
+                <!-- STEP 3 -->
+                <!-- [stepForm]="infoDouane" -->
+                <!-- [stepForm]="infoDouane" -->
+                <mdb-step name="Information de douanne" class="step5">
+                  [stepForm]="infoDouane"
+                  <!-- <div class="row align-items-center justify-content-center">
+                                  <div class="col-lg-3 col-md-12 col-sm-12 box-form-info">
+                                    <p class="form-info shadow p-3 mb-5 bg-white rounded">
+                                      <i class="fas fa-info-circle fa-3x"></i>
+                                      <strong>Remarque</strong>
+                                      <br />
+
+                                      {{ "info.remarqueStep1" | translate }}
+                                    </p>
+                                  </div> -->
+                  <form
+                    [formGroup]="infoDouane"
+                    class="col-lg-12 col-md-12 col-sm-12"
+                  >
+                    <div class="infos-block">
+                      <div class="row center-horizontal">
+                        <img
+                          class="col-lg-4 col-md-4 col-sm-12 p-0"
+                          height="100"
+                          src="./../../../assets/img/form/airport.svg"
+                        />
+                        <div
+                          class="mb-3"
+                          class="col-lg-6 col-md-6 col-sm-12 p-0"
+                        >
+                          <!-- <h3 class="section-title step-title-size">
+                                          {{ "info.douanne" | translate }}
+                                        </h3> -->
+                          <!-- <span style="color: brown"
+                                          >Les données dont ils disposent (*) sont obligatoire
+                                        </span> -->
+                        </div>
+                      </div>
+                      <!--
+                                    <p>
+                                      Le lorem ipsum est, en imprimerie, une suite de mots
+                                      sans signification utilisée à titre provisoire pour
+                                      calibrer une mise en page, le texte définitif venant
+                                      remplacer le faux-texte dès qu'il est prêt ou que la
+                                      mise en page est achevée.
+                                      <span
+                                        class="custom-control custom-switch"
+                                        style="display: inline-block"
+                                      >
+                                        <input
+                                          type="checkbox"
+                                          class="custom-control-input"
+                                          id="customSwitch1"
+                                        />
+                                        <label
+                                          class="custom-control-label"
+                                          for="customSwitch1"
+                                        ></label>
+                                      </span>
+                                    </p>
+                                    <p>
+                                      utilisée à titre provisoire pour calibrer une mise en
+                                      page, le tst prêt ou que la mise en page est achevée?.
+                                      <span
+                                        class="custom-control custom-switch"
+                                        style="display: inline-block"
+                                      >
+                                        <input
+                                          type="checkbox"
+                                          class="custom-control-input"
+                                          id="customSwitch2"
+                                        />
+                                        <label
+                                          class="custom-control-label"
+                                          for="customSwitch2"
+                                        ></label>
+                                      </span>
+                                    </p>
+                                    <p>
+                                      Le lorem ipsum e définitif venant remplacer le
+                                      faux-texte dès qu'il est prêt ou que la mise en page est
+                                      achevée?.
+                                      <span
+                                        class="custom-control custom-switch"
+                                        style="display: inline-block"
+                                      >
+                                        <input
+                                          type="checkbox"
+                                          class="custom-control-input"
+                                          id="customSwitch3"
+                                        />
+                                        <label
+                                          class="custom-control-label"
+                                          for="customSwitch3"
+                                        ></label>
+                                      </span>
+                                    </p> -->
+                      <fieldset>
+                        <legend>{{ "info.douanne" | translate }}</legend>
+                        <div class="form-row row">
+                          <!-------------------------------------------------------------- -->
+                          <div
+                            class="col-lg-12 col-md-12 col-sm-12 mt-5"
+                            id="toggle-switch"
+                          >
+                            <div
+                              class="row d-flex justify-content-center align-items-center"
+                            >
+                              <p
+                                class="col-lg-7 col-md-7 col-sm-12"
+                                style="margin: 0px"
+                              >
+                                Est-ce que vous êtes en possession d’une somme
+                                d’un montant supérieur a 10 000,00$US dollars
+                                américains ou sont équivalent dans une autre
+                                monnaie ?
+                              </p>
+
+                              <div
+                                class="toggle-radio col-lg-5 col-md-5 col-sm-12"
+                                style="display: inline"
+                              >
+                                <input
+                                  type="radio"
+                                  value="oui"
+                                  name="argentPossesion"
+                                  id="yes"
+                                  formControlName="argentPossesion"
+                                  (click)="isMonaie($event)"
+                                />
+                                <input
+                                  checked="checked"
+                                  type="radio"
+                                  value="non"
+                                  name="argentPossesion"
+                                  formControlName="argentPossesion"
+                                  id="no"
+                                  (click)="isMonaie($event)"
+                                />
+
+                                <div class="switch">
+                                  <label for="yes">Oui</label>
+                                  <label for="no">Non</label>
+                                  <span></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div *ngIf="isMoney" class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                              <label>
+                                {{ "form.label.montant" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                formControlName="montantDeclarer"
+                              />
+                              <div></div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                              <label>
+                                {{ "form.label.monnaie" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <select
+                                class="browser-default custom-select"
+                                formControlName="deviseDeclare"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+                                <option value="1">$US</option>
+
+                                <option value="2">EU</option>
+                              </select>
+                              <div></div>
+                            </div>
+                          </div>
+
+                          <!-- ----------------- -->
+
+                          <div
+                            *ngIf="isMoney"
+                            class="col-lg-12 col-md-12 col-sm-12 mt-5"
+                            id="toggle-switch"
+                          >
+                            <div
+                              class="row d-flex justify-content-center align-items-center"
+                            >
+                              <p
+                                class="col-lg-7 col-md-7 col-sm-12"
+                                style="margin: 0px"
+                              >
+                                Êtes-vous propriétaire de la somme déclarée ?
+                              </p>
+
+                              <div
+                                class="toggle-radio col-lg-5 col-md-5 col-sm-12"
+                                style="display: inline"
+                              >
+                                <input
+                                  type="radio"
+                                  value="oui"
+                                  name="ownerMoney"
+                                  id="yes13"
+                                  formControlName="ownerMoney"
+                                  (click)="isOwner($event)"
+                                />
+                                <input
+                                  checked="checked"
+                                  type="radio"
+                                  value="non"
+                                  formControlName="ownerMoney"
+                                  name="ownerMoney"
+                                  id="no13"
+                                  (click)="isOwner($event)"
+                                />
+
+                                <div class="switch">
+                                  <label for="yes13">Oui</label>
+                                  <label for="no13">Non</label>
+                                  <span></span>
+                                </div>
+                              </div>
+
+                              <div class="row" *ngIf="!owner">
+                                <div
+                                  class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4"
+                                >
+                                  <label>
+                                    {{ "label.envoie.prenom" | translate }}
+                                    <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="prenomEnvoie"
+                                  />
+                                  <div></div>
+                                </div>
+
+                                <div
+                                  class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4"
+                                >
+                                  <label>
+                                    {{ "label.envoie.nom" | translate }}
+                                    <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="nomEnvoie"
+                                  />
+                                  <div></div>
+                                </div>
+
+                                <div
+                                  class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4"
+                                >
+                                  <label>
+                                    {{ "label.hebergeur.prenom" | translate }}
+                                    <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="hebergeurPrenom"
+                                  />
+                                  <div></div>
+                                </div>
+
+                                <div
+                                  class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4"
+                                >
+                                  <label>
+                                    {{ "label.hebergeur.nom" | translate }}
+                                    <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="hebergeurNom"
+                                  />
+                                  <div></div>
+                                </div>
+
+                                <div
+                                  class="col-lg-12 col-md-12 col-sm-12 mt-1 mb-4"
+                                >
+                                  <label>
+                                    {{ "label.hebergeur.lien" | translate }}
+                                    <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="hebergeurLien"
+                                  />
+                                  <div></div>
+                                </div>
+
+                                <div
+                                  class="col-lg-12 col-md-12 col-sm-12 mt-1 mb-4"
+                                >
+                                  <label>
+                                    {{ "label.usage" | translate }}
+                                    <span class="text-danger"> * </span></label
+                                  >
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    formControlName="argentUtilisation"
+                                  />
+                                  <div></div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- form to show when hi -->
+                          </div>
+
+                          <!-- --------------------------------------------------- -->
+
+                          <!-- ----------------------------------------------------- -->
+                          <!-------------------------------------===================================================-------------------->
+
+                          <!-- ------------------------------------------------------- -->
+                          <!-- RADIO BUTTONS -->
+                          <!-- <div
+                                          class="custom-control ml-3 custom-radio custom-control-inline pl-4 col-lg-12 col-md-12 col-sm-12 mb-b"
+                                        >
+                                          <input
+                                            (change)="isMonaie($event)"
+                                            type="radio"
+                                            value="oui"
+                                            class="custom-control-input"
+                                            id="Oui3"
+                                            name="argentPossesion"
+                                            formControlName="argentPossesion"
+                                          />
+
+                                          <label
+                                            class="custom-control-label form-label-size col-lg-12 col-md-12 col-sm-12"
+                                            for="Oui3"
+                                            >{{ "label.douanne.Oui" | translate }}</label
+                                          >
+                                        </div> -->
+
+                          <!-- ===== -->
+                          <!-- <div
+                                          class="custom-control ml-3 custom-radio pl-4 custom-control-inline col-lg-6 col-md-6 col-sm-12 mb-4"
+                                        >
+                                          <input
+                                            (change)="isMonaie($event)"
+                                            type="radio"
+                                            value="non"
+                                            class="custom-control-input"
+                                            id="Non3"
+                                            name="argentPossesion"
+                                            formControlName="argentPossesion"
+                                          />
+
+                                          <label
+                                            class="custom-control-label form-label-size col-lg-6 col-md-6 col-sm-12"
+                                            for="Non3"
+                                            >{{ "label.douanne.Non" | translate }}</label
+                                          >
+                                        </div> -->
+
+                          <!-- END RADIO BUTTON -->
+
+                          <!-- IF YES SHOW THSES FIELDS -->
+                          <!-- FIELSD TO SHOW -->
+                          <!-- <div *ngIf="isMoney" class="row">
+                                          <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                                            <label>
+                                              {{ "form.label.montant" | translate }}
+                                              <span class="text-danger"> * </span></label
+                                            >
+                                            <input
+                                              type="number"
+                                              class="form-control"
+                                              formControlName="montantDeclarer"
+                                            />
+                                            <div></div>
+                                          </div>
+
+                                          <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                                            <label>
+                                              {{ "form.label.monnaie" | translate }}
+                                              <span class="text-danger"> * </span></label
+                                            >
+                                            <select
+                                              class="browser-default custom-select"
+                                              formControlName="deviseDeclare"
+                                            >
+                                            <option value="null" disabled="true" [selected]="true">
+                                              {{ "field.placeholder.select" | translate }}
+                                            </option>
+                                              <option value="1">$US</option>
+
+                                              <option value="2">EU</option>
+                                            </select>
+                                            <div></div>
+                                          </div>
+                                        </div> -->
+                          <!-- END FIELD TO SHOW -->
+
+                          <!-- FIELSD TO SHOW -->
+
+                          <!-- END FIELD TO SHOW -->
+
+                          <p *ngIf="isMoney"></p>
+                          <!-- RADIO BUTTON -->
+
+                          <div
+                            class="col-lg-12 col-md-12 col-sm-12 mt-5"
+                            id="toggle-switch"
+                          >
+                            <div
+                              class="row d-flex justify-content-center align-items-center"
+                            >
+                              <p
+                                class="col-lg-7 col-md-7 col-sm-12"
+                                style="margin: 0px"
+                              >
+                                Vous Avez quelque chose a declarer a la douanne?
+                              </p>
+
+                              <div
+                                class="toggle-radio col-lg-5 col-md-5 col-sm-12"
+                                style="display: inline"
+                              >
+                                <input
+                                  type="radio"
+                                  value="oui"
+                                  name="douaneDeclaration"
+                                  id="yes2"
+                                  formControlName="douaneDeclaration"
+                                  (click)="setDouanneDeclaration($event)"
+                                />
+                                <input
+                                  checked="checked"
+                                  type="radio"
+                                  value="non"
+                                  formControlName="douaneDeclaration"
+                                  name="douaneDeclaration"
+                                  (click)="setDouanneDeclaration($event)"
+                                  id="no2"
+                                />
+
+                                <div class="switch">
+                                  <label for="yes2">Oui</label>
+                                  <label for="no2">Non</label>
+                                  <span></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- texarea -->
+                          <div *ngIf="douaneDeclarationCheck">
+                            <div
+                              class="form-group col-lg-12 col-md-12 col-sm-12"
+                            >
+                              <label for="exampleFormControlTextarea1"
+                                >Donner la liste:</label
+                              >
+                              <textarea
+                                class="form-control"
+                                id="exampleFormControlTextarea1"
+                                rows="3"
+                              ></textarea>
+                            </div>
+                          </div>
+                          <!-- ----------------------------------------------------- -->
+                          <div
+                            class="col-lg-12 col-md-12 col-sm-12 mt-5"
+                            id="toggle-switch"
+                          >
+                            <div
+                              class="row d-flex justify-content-center align-items-center"
+                            >
+                              <p
+                                class="col-lg-7 col-md-7 col-sm-12"
+                                style="margin: 0px"
+                              >
+                                Avez-vous dans vos valises des animaux vivants,
+                                des plantes ou des produits alimentaires ?
+                              </p>
+
+                              <div
+                                class="toggle-radio col-lg-5 col-md-5 col-sm-12"
+                                style="display: inline"
+                              >
+                                <input
+                                  type="radio"
+                                  value="oui"
+                                  name="declaration"
+                                  id="yes4"
+                                  formControlName="declaration"
+                                />
+                                <input
+                                  checked="checked"
+                                  type="radio"
+                                  value="non"
+                                  formControlName="declaration"
+                                  name="declaration"
+                                  id="no4"
+                                />
+
+                                <div class="switch">
+                                  <label for="yes4">Oui</label>
+                                  <label for="no4">Non</label>
+                                  <span></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- --------------------------------------- -->
+                          <div
+                            class="col-lg-12 col-md-12 col-sm-12 mt-5"
+                            id="toggle-switch"
+                          >
+                            <div
+                              class="row d-flex justify-content-center align-items-center"
+                            >
+                              <p
+                                class="col-lg-7 col-md-7 col-sm-12"
+                                style="margin: 0px"
+                              >
+                                Avez-vous dans vos valises des biens imposables
+                                ? (dédouanement)
+                              </p>
+
+                              <div
+                                class="toggle-radio col-lg-5 col-md-5 col-sm-12"
+                                style="display: inline"
+                              >
+                                <input
+                                  type="radio"
+                                  value="oui"
+                                  name="imposable"
+                                  id="yes3"
+                                  formControlName="imposable"
+                                  (click)="bienImposable($event)"
+                                />
+                                <input
+                                  checked="checked"
+                                  type="radio"
+                                  value="non"
+                                  formControlName="imposable"
+                                  name="imposable"
+                                  (click)="bienImposable($event)"
+                                  id="no3"
+                                />
+
+                                <div class="switch">
+                                  <label for="yes3">Oui</label>
+                                  <label for="no3">Non</label>
+                                  <span></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- ------------------------------------------------------------ -->
+                          <!-- <p>
+                                          Avez-vous dans vos valises des biens imposables ?
+                                          (dédouanement)
+                                        </p>
+
+                                        <div
+                                          class="custom-control ml-3 custom-radio custom-control-inline pl-4 col-lg-6 col-md-6 col-sm-12 mb-b"
+                                        >
+                                          <input
+                                            (change)="bienImposable($event)"
+                                            type="radio"
+                                            value="oui"
+                                            class="custom-control-input"
+                                            id="Oui15"
+                                            name="imposable"
+                                            formControlName="imposable"
+                                          />
+
+                                          <label
+                                            class="custom-control-label form-label-size"
+                                            for="Oui15"
+                                            >{{ "label.douanne.Oui" | translate }}</label
+                                          >
+                                        </div>
+
+                                        <div
+                                          class="custom-control ml-3 custom-radio pl-4 custom-control-inline col-lg-6 col-md-6 col-sm-12 mb-4"
+                                        >
+                                          <input
+                                            (change)="bienImposable($event)"
+                                            type="radio"
+                                            value="non"
+                                            class="custom-control-input"
+                                            id="Non14"
+                                            name="imposable"
+                                            formControlName="imposable"
+                                          />
+
+                                          <label
+                                            class="custom-control-label form-label-size"
+                                            for="Non14"
+                                            >{{ "label.douanne.Non" | translate }}</label
+                                          >
+                                        </div>
+               -->
+
+                          <!-- <div
+               class="col-lg-6 col-md-6 col-sm-12 mt-5"
+               id="toggle-switch"
+                >
+                 <div
+                    class="row d-flex justify-content-center align-items-center"
+                 >
+                    <p
+                      class="col-lg-7 col-md-7 col-sm-12"
+                      style="margin: 0px"
+                    >
+                    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                    </p>
+
+                    <div
+                      class="toggle-radio col-lg-5 col-md-5 col-sm-12"
+                      style="display: inline"
+                    >
+                      <input
+                        type="radio"
+                        value="oui"
+                        name="imposable"
+                        id="yes2"
+                        formControlName="imposable"
+                        (click)= "isOwner($event)"
+
+                      />
+                      <input
+                        checked="checked"
+                        type="radio"
+                        value="non"
+                        formControlName="imposable"
+                        name="imposable"
+
+                        id="no2"
+                        (click)="isOwner($event)"
+                      />
+
+                           <div class="switch">
+                             <label for="yes2">Oui</label>
+                             <label for="no2">Non</label>
+                             <span></span>
+                           </div>
+                    </div>
+                  </div>
+                </div> -->
+
+                          <!-- --------------------------------------------------- -->
+                          <h4 *ngIf="isImposable">
+                            Details des biens impossables
+                          </h4>
+                          <hr *ngIf="isImposable" />
+
+                          <!-- IF YES SHOW THSES FIELDS -->
+                          <!-- FIELSD TO SHOW -->
+                          <div class="row" *ngIf="isImposable">
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                              <label>
+                                {{ "form.label.valeur" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                formControlName="valeurBien"
+                              />
+                              <div></div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                              <label>
+                                {{ "form.label.monnaie" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <select
+                                class="browser-default custom-select"
+                                formControlName="bienMonaieValeurDevise"
+                              >
+                                <option
+                                  value="null"
+                                  disabled="true"
+                                  [selected]="true"
+                                >
+                                  {{ "field.placeholder.select" | translate }}
+                                </option>
+                                <option value="1">$US</option>
+
+                                <option value="2">$EU</option>
+                              </select>
+                              <div></div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                              <label>
+                                {{ "form.label.D" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="detailMachandise"
+                              />
+                              <div></div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4">
+                              <label>
+                                {{ "form.label.valeurD" | translate }}
+                                <span class="text-danger"> * </span></label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                formControlName="valeurApproximatif"
+                              />
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END FIELD TO SHOW -->
+                      </fieldset>
+                      <div
+                        class="col-lg-6 col-md-6 col-sm-12 text-center mx-auto"
+                      >
+                        <!-- <button mdbBtn (click)="stepper.previous()" color="primary" outline="true" class="my-4" type="button">
+                                          <mdb-icon fas icon="chevron-circle-left"></mdb-icon> {{'back' | translate}}
+                                        </button> -->
+                        <button
+                          [disabled]="!infoDouane"
+                          mdbBtn
+                          (click)="stepper.previous()"
+                          color="primary"
+                          outline="true"
+                          class="my-4"
+                          type="button"
+                        >
+                          <mdb-icon fas icon="chevron-circle-left"></mdb-icon>
+                          {{ "btn.back" | translate }}
+                        </button>
+
+                        <button
+                          [disabled]="!infoDouane.valid"
+                          (click)="stepper.next()"
+                          class="btn btn-primary my-4"
+                          type="button"
+                        >
+                          {{ "btn.next" | translate }}
+                          <mdb-icon fas icon="chevron-circle-right"></mdb-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- </div> -->
+                </mdb-step>
+
+                <!-- [stepForm]="infoDouane" -->
+
+                <!-- [stepForm]="santeForm" -->
+                <!-- [stepForm]="santeForm" -->
+                <mdb-step
+                  [name]="'stepper.title.sante' | translate"
+                  class="step4"
+                  [stepForm]="santeForm"
+                >
+                  <form
+                    [formGroup]="santeForm"
+                    class="col-lg-12 col-md-12 col-sm-12"
+                  >
+                    <div class="infos-block">
+                      <div class="row center-horizontal">
+                        <img
+                          class="col-lg-4 col-md-4 col-sm-12 p-0"
+                          height="100"
+                          src="./../../../assets/img/form/doctors.svg"
+                        />
+                        <div
+                          class="mb-3"
+                          class="col-lg-6 col-md-6 col-sm-12 p-0"
+                        >
+                          <!-- <h3 class="section-title step-title-size">
+                            {{ "info.sante" | translate }}
+                          </h3> -->
+                          <!-- <span style="color: brown"
+                            >Les données dont ils disposent (*) sont obligatoire
+                          </span> -->
+                        </div>
+                      </div>
+                      <fieldset>
+                        <legend>{{ "info.sante" | translate }}</legend>
+
+                        <h1>{{ "info.sante.declaration" | translate }}</h1>
+
+                        <div class="question">
+                          <p>
+                            {{ "info.sante.dernierHeure" | translate }}
+                            <span class="required">*</span>
+                          </p>
+                          <!-- <small
+                          >Please include the following in your
+                          application.</small
+                        > -->
+
+                          <div class="row question-answer checkbox-item">
+                            <label class="container ml-3">
+                              {{ "info.sante.aucun" | translate }}
+                              <input
+                                type="checkbox"
+                                value="aucun"
+                                unchecked
+                                (change)="setIsCovidSymptome($event)"
+                              />
+                              <span class="checkmark"></span>
+                            </label>
+
+                            <div
+                              *ngIf="!AucunIsNotCheck"
+                              class="col-lg-4 col-md-4 col-sm-6"
+                            >
+                              <!-- <span *ngIf="AucunIsNotCheck"> -->
+                              <label class="container">
+                                {{ "info.sante.malTete" | translate }}
+
+                                <input
+                                  value="Mal"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                              <label class="container">
+                                {{ "info.sante.frisson" | translate }}
+                                <input
+                                  value="Frisson"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                              <label class="container">
+                                {{ "info.sante.fievre" | translate }}
+
+                                <input
+                                  value="Fièvre"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </div>
+
+                            <div
+                              *ngIf="!AucunIsNotCheck"
+                              class="col-lg-4 col-md-4 col-sm-6"
+                            >
+                              <label class="container"
+                                >{{ "info.sante.gorge" | translate }}
+
+                                <input
+                                  value="gorge"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                              <label class="container"
+                                >{{ "info.sante.nez" | translate }}
+
+                                <input
+                                  value="Nez"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                              <label class="container"
+                                >{{ "info.sante.respiratoire" | translate }}
+
+                                <input
+                                  value="respiratoire"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </div>
+
+                            <div
+                              *ngIf="!AucunIsNotCheck"
+                              class="col-lg-4 col-md-4 col-sm-6"
+                            >
+                              <label class="container"
+                                >{{ "info.sante.douleur" | translate }}
+
+                                <input
+                                  value="Douleur"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                              <label class="container"
+                                >{{ "info.sante.toux" | translate }}
+                                <input
+                                  value="Toux"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                              <label class="container"
+                                >{{ "info.sante.fatigue" | translate }}
+                                <input
+                                  value="Fatique"
+                                  type="checkbox"
+                                  [disabled]="AucunIsNotCheck"
+                                  (change)="setIsCovidSymptome($event)"
+                                />
+                                <span class="checkmark"></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          *ngIf="!AucunIsNotCheck && isCovidSymptome"
+                          class="col-lg-6 col-md-6 col-sm-12 mb-4"
+                        >
+                          <label class="form-label-size">
+                            {{ "form.label.phone.cont" | translate }}
+                            <span class="text-danger"> * </span></label
+                          >
+                          <span class="tt-direc">
+                            <input
+                              type="number"
+                              class="form-control"
+                              formControlName="phoneCovidSymptome"
+                            />
+                            <div
+                              class="tt tooltip-left"
+                              href="#"
+                              data-tooltip="la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum."
+                            >
+                              ?
+                            </div>
+                          </span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                          <label>
+                            {{ "form.label.country-visited" | translate }}
+                            <!-- <span class="text-danger"> * </span> -->
+                          </label>
+                          <ng-select
+                            #select
+                            [items]="countries | async"
+                            [multiple]="true"
+                            [closeOnSelect]="false"
+                            [searchable]="true"
+                            bindLabel="name"
+                            bindValue="name"
+                            placeholder="{{
+                              'countrie.placeholder' | translate
+                            }}"
+                            formControlName="visitedCountries"
+                          >
+                          </ng-select>
+                        </div>
+
+                        <h4>{{ "info.sante.covid" | translate }}</h4>
+                        <hr />
+                        <p>{{ "info.sante.covid-vaccin" | translate }}</p>
+                        <div
+                          class="custom-control ml-3 custom-radio custom-control-inline pl-4 col-lg-6 col-md-6 col-sm-12 mb-b"
+                        >
+                          <input
+                            type="radio"
+                            value="oui"
+                            class="custom-control-input"
+                            id="Oui"
+                            name="covidvacc"
+                            formControlName="covidvacc"
+                            (click)="setIsVacinneted($event)"
+                          />
+
+                          <label
+                            class="custom-control-label form-label-size"
+                            for="Oui"
+                            >{{ "label.vaccination.Oui" | translate }}</label
+                          >
+                        </div>
+
+                        <!-- ===== -->
+                        <div
+                          class="custom-control ml-3 custom-radio pl-4 custom-control-inline col-lg-6 col-md-6 col-sm-12 mb-4"
+                        >
+                          <input
+                            type="radio"
+                            value="non"
+                            (click)="setIsVacinneted($event)"
+                            class="custom-control-input"
+                            id="Non"
+                            name="covidvacc"
+                            formControlName="covidvacc"
+                          />
+
+                          <label
+                            class="custom-control-label form-label-size"
+                            for="Non"
+                            >{{ "label.vaccination.Non" | translate }}</label
+                          >
+                        </div>
+                        <!-- ===== -->
+
+                        <!-- SHOW THIS FIELD -->
+                        <div class="row">
+                          <div
+                            *ngIf="isVacinneted"
+                            class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4"
+                          >
+                            <label>
+                              {{ "info.sante.vaccinationDate" | translate }}
+
+                              <span class="text-danger"> * </span></label
+                            >
+                            <input
+                              type="date"
+                              class="form-control"
+                              formControlName="dateVaccination"
+                            />
+                          </div>
+                          <div
+                            *ngIf="isVacinneted"
+                            class="col-lg-6 col-md-6 col-sm-12 mt-1 mb-4"
+                          >
+                            <label>
+                              {{ "info.sante.vaccinType" | translate }}
+
+                              <span class="text-danger"> * </span></label
+                            >
+                            <select
+                              formControlName="vaccinType"
+                              class="browser-default custom-select"
+                            >
+                              <option
+                                value="null"
+                                disabled="true"
+                                [selected]="true"
+                              >
+                                {{ "field.placeholder.select" | translate }}
+                              </option>
+                              <option>Moderna</option>
+                              <option>Astrazeneca</option>
+                              <option>Pfizer</option>
+                              <option>Janssen (Johnson & Johnson)</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div>
+                          <!-- <p>{{ "label.covid" | translate }}</p> -->
+                          <!-- <div
+                            class="custom-control ml-3 custom-radio custom-control-inline pl-4 col-lg-6 col-md-6 col-sm-12 mb-b"
+                          >
+                            <input
+                              type="radio"
+                              value="oui"
+                              class="custom-control-input"
+                              id="covidYes"
+                              name="covidTest"
+                              (click)="setIsTest($event)"
+                            />
+
+                            <label
+                              class="custom-control-label form-label-size"
+                              for="covidYes"
+                              >{{ "label.vaccination.Oui" | translate }}</label
+                            >
+                          </div> -->
+
+                          <!-- ===== -->
+                          <!-- <div
+                            class="custom-control ml-3 custom-radio pl-4 custom-control-inline col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <input
+                              type="radio"
+                              value="non"
+                              class="custom-control-input"
+                              id="covidNo"
+                              name="covidTest"
+                            />
+
+                            <label
+                              class="custom-control-label form-label-size"
+                              for="covidNo"
+                              >{{ "label.vaccination.Non" | translate }}</label
+                            >
+                          </div> -->
+                        </div>
+                        <div>
+                          <p>{{ "label.vaccination.duree" | translate }}</p>
+                          <div
+                            class="custom-control ml-3 custom-radio custom-control-inline pl-4 col-lg-6 col-md-6 col-sm-12 mb-b"
+                          >
+                            <input
+                              formControlName="duree"
+                              type="radio"
+                              value="oui"
+                              class="custom-control-input"
+                              id="VaccDureeYes"
+                              name="VaccDuree"
+                            />
+
+                            <label
+                              class="custom-control-label form-label-size"
+                              for="VaccDureeYes"
+                              >{{ "label.vaccination.Oui" | translate }}</label
+                            >
+                          </div>
+
+                          <!-- ===== -->
+                          <div
+                            class="custom-control ml-3 custom-radio pl-4 custom-control-inline col-lg-6 col-md-6 col-sm-12 mb-4"
+                          >
+                            <input
+                              formControlName="duree"
+                              type="radio"
+                              value="non"
+                              class="custom-control-input"
+                              id="VaccDureeNo"
+                              name="VaccDuree"
+                            />
+
+                            <label
+                              class="custom-control-label form-label-size"
+                              for="VaccDureeNo"
+                              >{{ "label.vaccination.Non" | translate }}</label
+                            >
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <!-- show this message modal -->
+
+                    <div
+                      class="col-lg-6 col-md-6 col-sm-12 text-center mx-auto"
+                    >
+                      <!-- <button mdbBtn (click)="stepper.previous()" color="primary" outline="true" class="my-4" type="button">
+                    <mdb-icon fas icon="chevron-circle-left"></mdb-icon> {{'back' | translate}}
+                  </button> -->
+                      <button
+                        mdbBtn
+                        (click)="stepper.previous()"
+                        color="primary"
+                        outline="true"
+                        class="my-4"
+                        type="button"
+                      >
+                        <mdb-icon fas icon="chevron-circle-left"></mdb-icon>
+                        {{ "btn.back" | translate }}
+                      </button>
+
+                      <button
+                        (click)="stepper.next()"
+                        [disabled]="!santeForm.valid || symptomes.length <= 0"
+                        class="btn btn-primary my-4"
+                        type="button"
+                      >
+                        {{ "btn.next" | translate }}
+                        <mdb-icon fas icon="chevron-circle-right"></mdb-icon>
+                      </button>
+                    </div>
+                  </form>
+                </mdb-step>
+
+                <!-- ============= -->
+                <!-- STEP 3 -->
+                <!-- [stepForm]="declarationForm" -->
+                <!-- [stepForm]="declarationForm" -->
+                <mdb-step
+                  [name]="'stepper.title.declaration' | translate"
+                  class="step5"
+                >
+                  <!-- <div class="row align-items-center justify-content-center">
+                          <div class="col-lg-3 col-md-12 col-sm-12 box-form-info">
+                            <p class="form-info shadow p-3 mb-5 bg-white rounded">
+                              <i class="fas fa-info-circle fa-3x"></i>
+                              <strong>Remarque</strong>
+                              <br />
+
+                              {{ "info.remarqueStep1" | translate }}
+                            </p>
+                          </div> -->
+                  <form
+                    [formGroup]="declarationForm"
+                    class="col-lg-12 col-md-12 col-sm-12"
+                  >
+                    <div class="infos-block row">
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row center-horizontal">
+                          <img
+                            class="col-lg-4 col-md-4 col-sm-12 p-0"
+                            height="100"
+                            src="./../../../assets/img/form/terms.svg"
+                          />
+                          <div
+                            class="mb-3"
+                            class="col-lg-6 col-md-6 col-sm-12 p-0"
+                          >
+                            <h3 class="section-title step-title-size">
+                              {{ "info.declaration" | translate }}
+                            </h3>
+                            <!-- <span style="color: brown"
+                            >Les données dont ils disposent (*) sont obligatoire
+                          </span> -->
+                          </div>
+                        </div>
+
+                        <div class="row mt-5">
+                          <p class="col-lg-12 col-md-12 col-sm-12">
+                            {{ "info.declaration.final" | translate }}
+                          </p>
+                          <label
+                            class="container col-lg-12 col-md-12 col-sm-12"
+                          >
+                            <input
+                              type="checkbox"
+                              formControlName="terme"
+                              checked=""
+                            />
+                            <span class="checkmark"></span>
+                            {{ "info.declaration.signer" | translate }}
+                          </label>
+                          <button
+                            [disabled]="!declarationForm.valid"
+                            (click)="save()"
+                            class="btn btn-success my-4 mt-5"
+                            type="button"
+                          >
+                            <span
+                              *ngIf="loading"
+                              class="spinner-border spinner-border-sm mr-1 form-label-size"
+                            ></span>
+
+                            {{ "btn.submit" | translate }}
+                            <mdb-icon fas icon="paper-plane"></mdb-icon>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </mdb-step>
+              </mdb-stepper>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div
+  mdbModal
+  #success="mdbModal"
+  class="modal fade top"
+  id="frameModalTop"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-notify modal-success modal-dialog-centered"
+    role="document"
+  >
+    <!--Content-->
+    <div class="modal-content">
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <mdb-icon
+            fas
+            icon="check"
+            size="4x"
+            class="mb-4 animated rotateIn"
+          ></mdb-icon>
+          <h4>
+            {{ "thank.you" | translate }},
+            <strong>
+              <span class="text-uppercase"> {{ lastname }} </span>
+              {{ firstname }}</strong
+            >
+          </h4>
+          <p>{{ "voyeage" | translate }}</p>
+          <!-- <p>
+            {{ "ifSuccess" | translate }}
+          </p> -->
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a
+          type="button"
+          mdbBtn
+          color="success"
+          outline="true"
+          class="waves-effect"
+          mdbWavesEffect
+          (click)="closeModal()"
+          >Ok</a
+        >
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div
+  mdbModal
+  #warning="mdbModal"
+  class="modal fade top"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-notify modal-warning modal-dialog-centered"
+    role="document"
+  >
+    <!--Content-->
+    <div class="modal-content">
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <mdb-icon
+            fas
+            icon="exclamation-triangle"
+            size="4x"
+            class="mb-4 animated rotateIn"
+          ></mdb-icon>
+          <p class="lead">
+            {{ notAuthorizedMessage }}
+          </p>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a
+          type="button"
+          mdbBtn
+          color="warning"
+          outline="true"
+          class="waves-effect"
+          mdbWavesEffect
+          (click)="closeWarningModal()"
+          >Ferme</a
+        >
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<div
+  mdbModal
+  #notAuthorized="mdbModal"
+  class="modal fade top"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-notify modal-warning modal-dialog-centered"
+    role="document"
+  >
+    <!--Content-->
+    <div class="modal-content">
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <mdb-icon
+            fas
+            icon="exclamation-triangle"
+            size="4x"
+            class="mb-4 animated rotateIn"
+          ></mdb-icon>
+          <!-- <h4> {{'thank.you' | translate}}, <strong> <span class="text-uppercase"> {{traveller?.lastname}} </span>
+              {{traveller?.firstname}}</strong></h4> -->
+          <p class="lead">
+            Désolé, Vous n'êtes pas autorisé a entrer dans le pays.
+          </p>
+        </div>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a
+          type="button"
+          mdbBtn
+          color="warning"
+          outline="true"
+          class="waves-effect"
+          mdbWavesEffect
+          (click)="closeNotAuthorized()"
+          >Ferme</a
+        >
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!-- VALIDATE OTP -->
+<div
+  mdbModal
+  #validateOTP="mdbModal"
+  class="modal fade top"
+  id="frameModalTop"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="isVacinneted"
+>
+  <div
+    class="modal-dialog modal-notify modal-info modal-dialog-centered"
+    role="document"
+  >
+    <!--Content-->
+    <div class="modal-content">
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-left">
+          <h5>Un code de verification vous êtes envoyé sur votre email</h5>
+        </div>
+        <form [formGroup]="otpForm" (ngSubmit)="checkOTP()">
+          <div class="my-4">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 cold-sm-12">
+                  <label>Code de verification</label>
+                  <input
+                    type="text"
+                    formControlName="otp"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              mdbBtn
+              color="elegant"
+              size="sm"
+              rounded="true"
+              color="elegant"
+              (click)="closeModalOTP()"
+              type="button"
+              class="waves-light"
+              mdbWavesEffect
+            >
+              Annuler
+            </button>
+            <button
+              [disabled]="!otpForm.valid"
+              mdbBtn
+              color="info"
+              size="sm"
+              rounded="true"
+              type="submit"
+              class="waves-light"
+              mdbWavesEffect
+            >
+              Soumettre
+            </button>
+          </div>
+        </form>
+      </div>
+      <!--Footer-->
+    </div>
+
+    <!--/.Content-->
+  </div>
+</div>

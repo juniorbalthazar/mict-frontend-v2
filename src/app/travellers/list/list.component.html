@@ -1,0 +1,51 @@
+<section class="form-content mt-5">
+  <div class="container-fluid">
+    <div class="col-md-10 col-lg-10 col-sm-12 mx-auto float-none rounded white my-5 py-2 px-2">
+      <div class="card-body">
+        <h4 class="h4-responsive font-weight-bold">
+          <mdb-icon fas icon="folder" class="mr-2"></mdb-icon> Liste des voyageurs ...
+        </h4>
+        <hr>
+        <!-- Filter -->
+        <div class="mb-3">
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            class="form-control"
+            id="search"
+            placeholder="Rechercher par ID, Numero d'identification du document de voyage, Nom et Prénom ... ..."
+            mdbInput
+          />
+        </div>
+        <!-- Data -->
+        <div class="">
+          <table mdbTable class="table-responsive z-depth-0">
+            <thead>
+            <tr>
+              <th class="font-weight-bold text-uppercase"
+                  *ngFor="let head of headElements; let i = index"
+                  scope="col"
+              >
+                {{head}}
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let traveller of travellers; let i = index">
+              <th class="font-weight-bold" scope="row">{{traveller?.code}}</th>
+              <td class="text-uppercase">{{traveller?.nom}}</td>
+              <td >{{traveller?.prenom}}</td>
+              <td >{{traveller?.sexe}}</td>
+              <td >{{traveller?.dateNaissance | date: 'dd/MM/yyyy'}}</td>
+              <td>{{traveller?.document}}</td>
+              <td>{{traveller?.numeroPiece}}</td>
+              <td>{{traveller?.testPcr ? 'Oui' : 'Non'}}</td>
+              <td >{{traveller?.dateTestPcr | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

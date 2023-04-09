@@ -1,0 +1,30 @@
+#main{
+  height: 100%;
+  padding-top: 4rem;
+  overflow: hidden;
+}
+
+@media(max-width:768px) {
+  #main{
+    padding-top: 0rem;
+  }
+  .rounded-card{
+    border:none;
+}
+}
+
+
+
+
+
+
+@media(max-width:992px) {
+    #main-form{
+      padding:0px;
+      margin-top: 0px;
+      overflow-x: hidden;
+    }
+    .rounded-card{
+      border:none;
+  }
+  }

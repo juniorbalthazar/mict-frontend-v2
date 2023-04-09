@@ -1,0 +1,633 @@
+<section class="form-content mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-lg-10 mx-auto card border-0 float-none rounded white  py-2 px-2">
+        <!-- Spinner -->
+        <div class="col-12 text-center mx-auto loading" *ngIf="loading">
+          <mdb-spinner spinnerType="big" spinnerColor="blue"></mdb-spinner>
+        </div>
+        <!-- Card header -->
+        <div class="card-header bg-white">
+            <div class="col-12 align-middle">
+              <div class="d-flex">
+                <div class="mr-auto">
+                  <h4 class="font-weight-bold">
+                    <a [routerLink]="['/travellers/list']">
+                      <mdb-icon fas class="mr-2" icon="chevron-circle-left"></mdb-icon>
+                    </a>
+                    <span class="text-uppercase">{{traveller?.firstname}}</span> {{traveller?.lastname}}
+                  </h4>
+                </div>
+                <!-- Role -->
+                <div [ngSwitch]="userRole">
+                  <ng-template [ngSwitchCase]="'AGENT'">
+                    <!-- Temperature -->
+                    <button *ngIf="traveller?.haveTemperature === false" mdbBtn size="sm" (click)="openTempModal()" type="button"
+                      color="primary" rounded="true" mdbWavesEffect>
+                      <mdb-icon fas icon="plus-circle"></mdb-icon> Temperature
+                    </button>
+                    <!-- Remarque -->
+                    <button *ngIf="traveller?.haveRemaque === false" mdbBtn size="sm" (click)="openNoteModal()" type="button"
+                      color="warning" rounded="true" mdbWavesEffect>
+                      <mdb-icon fas icon="plus-circle"></mdb-icon> Remarque
+                    </button>
+                  </ng-template>
+                  <ng-template [ngSwitchCase]="'SUPERVISOR'">
+                    <!-- Accept or reject  -->
+                    <div *ngIf="traveller?.process === false">
+                      <button mdbBtn size="sm" (click)="openApprouvedModal()" type="button" color="success" rounded="true"
+                        mdbWavesEffect>
+                        <mdb-icon fas icon="check"></mdb-icon> Approuver
+                      </button>
+                      <button mdbBtn size="sm" (click)="openRefuseModal()" type="button" color="danger" rounded="true"
+                        mdbWavesEffect>
+                        <mdb-icon fas icon="times-circle"></mdb-icon> Refuser
+                      </button>
+                    </div>
+                  </ng-template>
+                  <ng-template [ngSwitchCase]="'ADMIN'">
+                    <!-- Accept or reject  -->
+                    <div *ngIf="traveller?.process === false">
+                      <button mdbBtn size="sm" (click)="openApprouvedModal()" type="button" color="success" rounded="true"
+                        mdbWavesEffect>
+                        <mdb-icon fas icon="check"></mdb-icon> Approuver
+                      </button>
+                      <button mdbBtn size="sm" (click)="openRefuseModal()" type="button" color="danger" rounded="true"
+                        mdbWavesEffect>
+                        <mdb-icon fas icon="times-circle"></mdb-icon> Refuser
+                      </button>
+                    </div>
+                    <div *ngIf="traveller?.process === true && traveller?.accepter === true">
+                      <h3 class="font-weight-bold dark-grey-text">
+                        <mdb-icon fas icon="check-circle" class="text-success mb-3 animated rotateIn"></mdb-icon>
+                        Approuvé
+                      </h3>
+                    </div>
+                    <div *ngIf="traveller?.process === true && traveller?.accepter === false">
+                      <h3 class="font-weight-bold dark-grey-text">
+                        <mdb-icon fas icon="times-circle" class="text-danger mb-3 animated rotateIn"></mdb-icon>
+                        Refusé
+                      </h3>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="card-body">
+          <!-- Data -->
+            <!-- Nav tabs -->
+            <mdb-tabset [buttonClass]="'pills-blue-grey rounded white mb-0'" [contentClass]="'card z-depth-0 border-0'">
+              <!--Panel 1-->
+              <mdb-tab heading="<i class='fas fa-info-circle'></i> Informations sur le voyageur">
+                <div class="row pt-0">
+                  <div class="col-12">
+                    <table mdbTable small="true" striped="true" class="z-depth-0">
+                      <tbody>
+                        <tr class="bg-white">
+                          <td class="border-top-0" colspan="3">
+                            <h4> Informations Personnelles</h4>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Code :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td class="font-weight-bold"> {{traveller?.code}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Nom :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td class="text-uppercase"> {{traveller?.firstname}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Prénom :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.lastname}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Sexe :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> 
+                            <!-- {{traveller?.sexe}}  -->
+                            {{traveller?.sexe === 'H' ? 'Homme' : 'Femme'}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Date de naissance :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.birthdate | date: 'dd/MM/yyyy'}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Nationalité :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.nationality}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Télephone :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.phone}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Email :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.email}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Hébergement :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td>
+                            {{traveller?.lieuSejour === 'Hotel' ? traveller?.hotelResider : 'Résidence privée'}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Adresse hébergement :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td>
+                            {{traveller?.strretAddress}} <br>
+                            <strong>
+                              {{traveller?.communeName}}, {{traveller?.departementName}}
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Personne contact :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.contactName}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Télephone (Personne contact) :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td>
+                            <span *ngIf="traveller?.contactPhone"> +509 {{traveller?.contactPhone}}</span>
+                          </td>
+                          <!-- {{traveller?.contactPhone}} -->
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Adresse (Personne de contact) :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td>
+                            {{traveller?.contactAddress}} <br>
+                            <strong>
+                              {{traveller?.contactCommuneName}}, {{traveller?.contactDepartementName}}
+                            </strong>
+                          </td>
+                        </tr>
+                        <tr class="bg-white mt-3">
+                          <td class="border-top-0" colspan="3">
+                            <h4> Informations de voyage</h4>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Document de voyage :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.documentType}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Numero d'identification du document :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.documentSerial}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Date de voyage :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.dateVoyage}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Raison de voyage :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.travelMotif}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Mode de voyage :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td>
+                            <container-element [ngSwitch]="traveller?.travelTypeId">
+                              <p *ngSwitchCase="3">
+                                Terre
+                              </p>
+                              <p *ngSwitchCase="2">
+                                Mer
+                              </p>
+                              <p *ngSwitchCase="1">
+                                Air
+                              </p>
+                            </container-element>
+                          </td>
+                        </tr>
+                        <tr *ngIf="traveller?.travelType == '1'">
+                          <td class="text-uppercase font-weight-bold">
+                            Ligne aérienne :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.company}} </td>
+                        </tr>
+                        <tr *ngIf="traveller?.tavelType == '1'">
+                          <td class="text-uppercase font-weight-bold">
+                            Numéro de vol :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.flightNumber}} </td>
+                        </tr>
+                        <tr *ngIf="traveller?.tavelType == '1'">
+                          <td class="text-uppercase font-weight-bold">
+                            Numéro de vol :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.flightNumber}} </td>
+                        </tr>
+                        <!-- Terre -->
+                        <tr *ngIf="traveller?.typeGroundTranport == '1'">
+                          <td class="text-uppercase font-weight-bold">
+                            Compagnie de transport
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.compagnyVoyage}} </td>
+                        </tr>
+                        <tr *ngIf="traveller?.typeGroundTranport == '1'">
+                          <td class="text-uppercase font-weight-bold">
+                            Numero de transport
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.numeroTransport}} </td>
+                        </tr>
+                        <tr *ngIf="traveller?.typeGroundTranport == '2'">
+                          <td class="text-uppercase font-weight-bold">
+                            Marque
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.marque}} </td>
+                        </tr>
+                        <tr *ngIf="traveller?.typeGroundTranport == '2'">
+                          <td class="text-uppercase font-weight-bold">
+                            Plque d'immatriculation
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.plaque}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Pays de résidence :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.originCountry}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Pays de provenance :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.provenanceCountry}} </td>
+                        </tr>
+                        <tr>
+                          <td class="text-uppercase font-weight-bold">
+                            Pays de visités :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.visitedCountries}} </td>
+                        </tr>
+                        <tr class="bg-white mt-3">
+                          <td class="border-top-0" colspan="3">
+                            <h4> Informations sur la santé</h4>
+                          </td>
+                        </tr>
+                        <tr *ngIf="traveller?.testPCR">
+                          <td class="text-uppercase font-weight-bold">
+                            Test PCR :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> Oui </td>
+                        </tr>
+                        <!--  -->
+                        <tr *ngIf="traveller?.testedPcr">
+                          <td class="text-uppercase font-weight-bold">
+                            Testé positif :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> Oui </td>
+                        </tr>
+                        <tr *ngIf="traveller?.testPCR || traveller?.testedPrc">
+                          <td class="text-uppercase font-weight-bold">
+                            Date du test :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td> {{traveller?.dateTestPCR | date: 'dd/MM/yyyy'}} </td>
+                        </tr>
+
+
+                        <tr *ngIf="traveller?.temperature">
+                          <td class="text-uppercase font-weight-bold">
+                            Temperature corporelle :
+                          </td>
+                          <td>
+
+                          </td>
+                          <td class="font-weight-bold"> {{traveller?.temperature}} {{traveller?.temperatureType}} </td>
+                        </tr>
+                        <tr class="bg-white mt-3" *ngIf="traveller?.remaque">
+                          <td class="border-top-0" colspan="3">
+                            <h4 class="font-weight-bold text-warning"> Remarque :</h4>
+                            <p> {{traveller?.remaque}} </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </mdb-tab>
+              <!--Panel 2-->
+              <mdb-tab heading="<i class='far fa-file'></i> Documents">
+                <div class="row">
+                  <div class="col-12">
+                    <section class="pdf mt-2 mb-5">
+                      <h4 class=""> Document de voyage
+                        <hr>
+                      </h4>
+                      <img [src]="pdfSrcDoc" alt="thumbnail" class="img-thumbnail" style="width: 400px">
+                    </section>
+
+                    <section class="pdf">
+                      <h4 class="text-left"> Resulat Test PCR
+                        <hr>
+                      </h4>
+                      <!-- <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block;" [original-size]="true"
+                        [fit-to-page]="true" [show-all]="true" [stick-to-page]="true"></pdf-viewer> -->
+                      <img [src]="pdfSrc" alt="thumbnail" class="img-thumbnail" style="width: 600px">
+                    </section>
+
+                  </div>
+                </div>
+              </mdb-tab>
+            </mdb-tabset>
+            <!-- -->
+        </div>
+        <!-- <div class="card-footer bg-white"></div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Temperature -->
+<div mdbModal #temperatureModal="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-hidden="true" animated="true" [config]="{backdrop: true, ignoreBackdropClick: true}"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title w-100 font-weight-bold text-uppercase">Temp&eacute;rature</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeTemModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+
+        <form [formGroup]="temForm" (ngSubmit)="onTemperatureSubmit()">
+          <div class="my-4">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 cold-sm-12 mb-3">
+                  <div><label> Mesure </label></div>
+                  <div class="custom-control custom-radio custom-control-inline mr-4">
+                    <input type="radio" value="Celcius" class="custom-control-input" id="celcius" name="mesure"
+                      formControlName="mesure">
+                    <label class="custom-control-label" for="celcius">Celcius</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="Fahrenheit" class="custom-control-input" id="fahrenheit" name="mesure"
+                      formControlName="mesure">
+                    <label class="custom-control-label" for="fahrenheit">Fahrenheit</label>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 cold-sm-12">
+                  <input formControlName="degre"
+                    [ngClass]="{ 'is-invalid': isTemSubmit && temFormControls.degre.errors }" class="form-control"
+                    type="number" placeholder="Temperature ...">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn color="elegant" size="sm" rounded="true" color="elegant" (click)="closeTemModal()"
+              type="button" class="waves-light" mdbWavesEffect>Annuler</button>
+            <button mdbBtn color="primary" size="sm" rounded="true" type="submit" class="waves-light"
+              mdbWavesEffect>Ajouter</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Note -->
+<div mdbModal #noteModal="mdbModal" class="modal fade" id="noteModalTop" tabindex="-1" role="dialog" aria-hidden="true"
+  animated="true" [config]="{backdrop: true, ignoreBackdropClick: true}" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title w-100 font-weight-bold text-uppercase">Remarque..</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeNoteModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+
+        <form [formGroup]="noteForm" (ngSubmit)="onNoteSubmit()">
+          <div class="my-4">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 cold-sm-12">
+                  <textarea formControlName="note" rows="5"
+                    [ngClass]="{ 'is-invalid': isNoteSubmit && noteFormControls.note.errors }" class="form-control">
+
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button mdbBtn color="warning" size="sm" rounded="true" type="submit" class="waves-light"
+              mdbWavesEffect>Soumettre</button>
+            <button mdbBtn color="elegant" size="sm" rounded="true" color="elegant" (click)="closeNoteModal()"
+              type="button" class="waves-light" mdbWavesEffect>Annuler</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Approuved -->
+<div mdbModal #approuved="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center">
+          <mdb-icon fas icon="exclamation-triangle" size="4x" class="mb-4 animated rotateIn"></mdb-icon>
+          <p class="font-weight-normal">
+            Vous êtes en train d'approuver la rentrer au pays de
+            <strong>
+              <span class="text-uppercase">
+                {{traveller?.lastname}}
+              </span>
+              {{traveller?.firstname}} .
+            </strong>
+          </p>
+          <p class="lead"> êtes-vous sûr de vouloir continuer ?</p>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <a type="button" (click)="authorizedTraveller(true)" mdbBtn color="success" class="waves-effect" mdbWavesEffect>
+          OUI </a>
+        <a type="button" mdbBtn color="success" outline="true" class="waves-effect" mdbWavesEffect
+          (click)="closeApprouvedModal()">Annuler</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CANCEL -->
+<div mdbModal #refuse="mdbModal" class="modal fade" id="noteModalTop" tabindex="-1" role="dialog" aria-hidden="true"
+  animated="true" [config]="{backdrop: true, ignoreBackdropClick: true}" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title w-100 font-weight-bold text-uppercase">Raison</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeRefuseModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+
+        <form [formGroup]="rejectForm" (ngSubmit)="onRejectSubmit()">
+          <div class="my-4">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 cold-sm-12">
+                  <textarea formControlName="reason" class="form-control" rows="5">
+
+                </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button [disabled]="!rejectForm.valid" mdbBtn color="danger" size="sm" rounded="true" type="submit"
+              class="waves-light" mdbWavesEffect>Refuser</button>
+            <button mdbBtn color="elegant" size="sm" rounded="true" color="elegant" (click)="closeRefuseModal()"
+              type="button" class="waves-light" mdbWavesEffect>Annuler</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
